@@ -3,6 +3,8 @@ use v6.c;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Time;
 
+use ICal::GLib::Object;
+
 our subset ICalTimeAncestry is export of Mu
   where ICalTime | ICalObjectAncestry;
 
