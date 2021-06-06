@@ -1,0 +1,4 @@
+prefix=ICal::GLib
+modules=ICal::GLib::Raw::Types
+backups=backup,bitbucket,google-backup
+hfile-prefix=LIBICAL_ICAL_EXPORT
