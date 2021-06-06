@@ -3,8 +3,9 @@ use v6.c;
 use NativeCall;
 
 use GLib::Raw::Definitions;
+use GLib::Raw::Object;
 use ICal::GLib::Raw::Definitions;
-use ICal::GLib::Raw::Structs;
+#use ICal::GLib::Raw::Structs;
 
 unit package ICal::GLib::Raw::Object;
 
