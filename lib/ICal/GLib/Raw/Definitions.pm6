@@ -4,15 +4,17 @@ use NativeCall;
 
 use GLib::Raw::Definitions;
 
-use GLib::Roles::Pointers
+use GLib::Roles::Pointers;
 
 unit package ICal::GLib::Raw::Definitions;
 
-constant ical-glib = 'ical-glib',v3;
+constant ical-glib is export = 'ical-glib',v3;
 
-class ICalComponent  is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ICalCompIter   is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ICalObject     is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ICalProperty   is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ICalTime       is repr<CPointer> is export does GLib::Roles::Pointers { }
-class ICalTimeSpan   is repr<CPointer> is export does GLib::Roles::Pointers { }
+class ICalComponent  is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalCompIter   is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalObject     is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalParameter  is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalProperty   is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalTime       is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalTimeSpan   is repr<CPointer> does GLib::Roles::Pointers is export  { }
+class ICalValue      is repr<CPointer> does GLib::Roles::Pointers is export  { }
