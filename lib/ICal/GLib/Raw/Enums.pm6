@@ -1,11 +1,12 @@
 use v6.c;
 
 use GLib::Raw::Definitions;
+use ICal::Raw::Definitions;
 use ICal::Raw::Enums;
 
 unit package ICal::GLib::Raw::Enums;
 
-onstant ICalComponentKind is export := guint32;
+constant ICalComponentKind is export := guint32;
 our enum ICalComponentKindEnum is export (
   I_CAL_NO_COMPONENT              =>              ICAL_NO_COMPONENT,
   I_CAL_ANY_COMPONENT             =>             ICAL_ANY_COMPONENT,
