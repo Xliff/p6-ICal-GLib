@@ -47,11 +47,16 @@ class ICal::GLib::Object {
     gboolean $is_global_memory,
     GObject() $owner
   ) {
-    i_cal_object_construct($!ico, $native, $native_destroy_func, $is_global_memory, $owner);
+    i_cal_object_construct(
+      $!ico,
+      $native,
+      $native_destroy_func, 
+      $is_global_memory, $owner
+    );
   }
 
-  method free_global_objects {
-    i_cal_object_free_global_objects($!ico);
+  method free_global_objects (ICal::GLib::Object:U: ) {
+    i_cal_object_free_global_objects();
   }
 
   # Boolean?
