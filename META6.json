@@ -1,0 +1,41 @@
+{
+  "authors": [ "clifton.wood@gmail.com" ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Perl6 API Bindings for libical-glib",
+  "license": "Artistic-2.0",
+  "name": "p6-ICal",
+  "perl": "6.d",
+  "source-url": "https://github.com/Xliff/p6-ICal-GLib.git",
+  "provides": {
+      "ICal::GLib::Raw::Definitions" :  "lib/ICal/GLib/Raw/Definitions.pm6" ,
+      "ICal::GLib::Raw::Array"       :  "lib/ICal/GLib/Raw/Array.pm6"       ,
+      "ICal::GLib::Raw::Enums"       :  "lib/ICal/GLib/Raw/Enums.pm6"       ,
+      "ICal::GLib::Raw::Component"   :  "lib/ICal/GLib/Raw/Component.pm6"   ,
+      "ICal::GLib::Raw::Object"      :  "lib/ICal/GLib/Raw/Object.pm6"      ,
+      "ICal::GLib::Raw::Property"    :  "lib/ICal/GLib/Raw/Property.pm6"    ,
+      "ICal::GLib::Raw::Time"        :  "lib/ICal/GLib/Raw/Time.pm6"        ,
+      "ICal::GLib::Raw::Timezone"    :  "lib/ICal/GLib/Raw/Timezone.pm6"    ,
+      "ICal::GLib::Raw::Exports"     :  "lib/ICal/GLib/Raw/Exports.pm6"     ,
+      "ICal::GLib::Raw::Types"       :  "lib/ICal/GLib/Raw/Types.pm6"       ,
+      "ICal::GLib::Object"           :  "lib/ICal/GLib/Object.pm6"          ,
+      "ICal::GLib::Array"            :  "lib/ICal/GLib/Array.pm6"           ,
+      "ICal::GLib::Timezone"         :  "lib/ICal/GLib/Timezone.pm6"        ,
+      "ICal::GLib::Time"             :  "lib/ICal/GLib/Time.pm6"            ,
+      "ICal::GLib::Property"         :  "lib/ICal/GLib/Property.pm6"        ,
+      "ICal::GLib::Component"        :  "lib/ICal/GLib/Component.pm6"       
+    },
+  "resources": [ ],
+  "source-url": "",
+  "tags": [
+    "ical",
+    "glib",
+    "binding",
+    "NativeCall"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
