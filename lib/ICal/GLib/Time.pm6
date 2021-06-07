@@ -4,6 +4,7 @@ use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Time;
 
 use ICal::GLib::Object;
+use ICal::GLib::Timezone;
 
 our subset ICalTimeAncestry is export of Mu
   where ICalTime | ICalObjectAncestry;
@@ -42,7 +43,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
   }
 
   method new_current_with_zone (ICalTimezone() $zone) {
-    i_cal_time_new_current_with_zone($zone);
+    my $time = i_cal_time_new_current_with_zone($zone);
 
     $time ?? self.bless( :$time ) !! Nil
   }
@@ -50,13 +51,13 @@ class ICal::GLib::Time is ICal::GLib::Object {
   method new_from_day_of_year (Int() $day, Int() $year) {
     my gint ($d, $y) = ($day, $year);
 
-    i_cal_time_new_from_day_of_year($d, $y);
+    my $time = i_cal_time_new_from_day_of_year($d, $y);
 
     $time ?? self.bless( :$time ) !! Nil
   }
 
   method new_from_string (Str() $str) {
-    i_cal_time_new_from_string($str);
+    my $time = i_cal_time_new_from_string($str);
 
     $time ?? self.bless( :$time ) !! Nil
   }
@@ -133,7 +134,8 @@ class ICal::GLib::Time is ICal::GLib::Object {
   }
   multi method compare (
     ICal::GLib::Time:U:
-    ICalTime() $a
+
+    ICalTime() $a,
     ICalTime() $b
   ) {
     i_cal_time_compare($a, $b);
@@ -144,7 +146,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
   }
   multi method compare_date_only (
     ICal::GLib::Time:U:
-    ICalTime() $b
+    ICalTime() $a,
     ICalTime() $b
   ) {
     i_cal_time_compare_date_only($a, $b);
@@ -161,7 +163,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
   multi method compare_date_only_tz (
     ICal::GLib::Time:U:
 
-    ICalTime()     $a
+    ICalTime()     $a,
     ICalTime()     $b,
     ICalTimezone() $zone
   ) {
@@ -173,7 +175,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
 
     # Transfer: full
     $t-tz ??
-      ( $raw ?? $t-tz !! ICal:GLib::Time.new($t-tz, :!ref) )
+      ( $raw ?? $t-tz !! ICal::GLib::Time.new($t-tz, :!ref) )
       !!
       Nil;
   }
@@ -245,7 +247,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
   { * }
 
   multi method get_time {
-    samwith($, $, $);
+    samewith($, $, $);
   }
   multi method get_time (
     $hour   is rw,
@@ -384,13 +386,13 @@ class ICal::GLib::Time is ICal::GLib::Object {
     i_cal_time_start_doy_week($!ict, $fdow);
   }
 
-  method subtract (ICal::GLib::Time:D: ICalTime $t2) {
+  multi method subtract (ICal::GLib::Time:D: ICalTime $t2) {
     ICal::GLib::Time.substract($!ict, $t2)
   }
-  method subtract (
+  multi method subtract (
     ICal::GLib::Time:U:
 
-    ICalTime() $t1
+    ICalTime() $t1,
     ICalTime() $t2
   ) {
     i_cal_time_subtract($t1, $t2);
@@ -405,7 +407,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
 class ICal::GLib::Time::Span {
   has ICalTimeSpan $!icts;
 
-  method new (ICalTime $dtend, gint $is_busy) {
+  method new (ICalTime() $dtend, gint $is_busy) {
     i_cal_time_span_new($!icts, $dtend, $is_busy);
   }
 
@@ -414,22 +416,28 @@ class ICal::GLib::Time::Span {
   }
   multi method contains (
     ICal::GLib::Time::Span:U:
+
     ICalTimeSpan() $a,
     ICalTimeSpan() $b
   ) {
     so i_cal_time_span_contains($a, $b);
   }
 
-  method overlaps (ICal::GLib::Time::Span:D: $s2) {
+  multi method overlaps (ICal::GLib::Time::Span:D: ICalTimeSpan() $s2) {
     ICal::GLib::Time::Span.overlaps($!icts, $s2);
   }
-  method overlaps (
+  multi method overlaps (
     ICal::GLib::Time::Span:U:
 
-    ICalTimeSpan() $s1
+    ICalTimeSpan() $s1,
     ICalTimeSpan() $s2
   ) {
     i_cal_time_span_overlaps($s2, $s2);
+  }
+
+  # From i-cal-timezone.h
+  method convert_timezone (ICalTimezone() $from_zone, ICalTimezone() $to_zone) {
+    ICal::GLib::Timezone.convert($!icts, $from_zone, $to_zone);
   }
 
 }
