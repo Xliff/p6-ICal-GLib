@@ -7,9 +7,15 @@ use ICal::GLib::Raw::Component;
 
 use ICal::GLib::Object;
 use ICal::GLib::Property;
+use ICal::GLib::Time;
+#use ICal::GLib::TimeSpan;
+use ICal::GLib::Timezone;
 
 # Pre-definitions
 class ICal::GLib::Component::Iter { ... }
+
+our subset ICalComponentAncestry is export of Mu
+  where ICalComponent | ICalObjectAncestry;
 
 # Main Class definition
 class ICal::GLib::Component is ICal::GLib::Object {
@@ -40,7 +46,14 @@ class ICal::GLib::Component is ICal::GLib::Object {
     is also<ICalComponent>
   { $!icc }
 
-  method new (Int() $kind) {
+  multi method new (ICalComponentAncestry $ical-component, :$ref = True) {
+    return Nil unless $ical-component;
+
+    my $o = self.bless( :$ical-component );
+    $o.ref if $ref;
+    $o
+  }
+  multi method new (Int() $kind) {
     my ICalComponentKind $k = $kind;
 
     my $ical-component = i_cal_component_new($k);
@@ -133,25 +146,25 @@ class ICal::GLib::Component is ICal::GLib::Object {
   }
 
   method new_xavailable is also<new-xavailable> {
-    my $ical-component = i_cal_component_new_xavailable($!icc);
+    my $ical-component = i_cal_component_new_xavailable();
 
     $ical-component ?? self.bless( :$ical-component ) !! Nil;
   }
 
   method new_xdaylight is also<new-xdaylight> {
-    my $ical-component = i_cal_component_new_xdaylight($!icc);
+    my $ical-component = i_cal_component_new_xdaylight();
 
     $ical-component ?? self.bless( :$ical-component ) !! Nil;
   }
 
   method new_xstandard is also<new-xstandard> {
-    my $ical-component = i_cal_component_new_xstandard($!icc);
+    my $ical-component = i_cal_component_new_xstandard();
 
     $ical-component ?? self.bless( :$ical-component ) !! Nil;
   }
 
   method new_xvote is also<new-xvote> {
-    my $ical-component = i_cal_component_new_xvote($!icc);
+    my $ical-component = i_cal_component_new_xvote();
 
     $ical-component ?? self.bless( :$ical-component ) !! Nil;
   }
@@ -193,7 +206,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
   method recurrenceid is rw {
     Proxy.new:
       FETCH => -> $     { self.get_recurrenceid    },
-      STORE => -> $, \v { self.set_recurrenceid(v) }
+      STORE => -> $, \v { self.set_recurrencdid(v) }
   }
 
   method add_component (ICalComponent() $child) is also<add-component> {
@@ -215,7 +228,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
 
     # Transfer: full
     $ci ??
-      ( $raw ?? ICal::GLib::Component::Iter.new($ci, :!ref) )
+      ( $raw ?? $ci !! ICal::GLib::Component::Iter.new($ci, :!ref) )
       !!
       Nil
   }
@@ -338,14 +351,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_get_description($!icc);
   }
 
-  method get_dtend (:$raw = False)
-    is also<
-      get-dtend
-      dtend
-      dt_end
-      dt-end
-    >
-  {
+  method get_dtend (:$raw = False)is also<get-dtend> {
     my $t = i_cal_component_get_dtend($!icc);
 
     # Transfer: full
@@ -366,7 +372,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
       Nil
   }
 
-  method get_dtstart is also<get-dtstart> {
+  method get_dtstart (:$raw = False) is also<get-dtstart> {
     my $t = i_cal_component_get_dtstart($!icc);
 
     # Transfer: full
@@ -376,7 +382,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
       Nil
   }
 
-  method get_due
+  method get_due (:$raw = False)
     is also<
       get-due
       due
@@ -419,7 +425,9 @@ class ICal::GLib::Component is ICal::GLib::Object {
       Nil
   }
 
-  method get_first_property (Int() $kind) is also<get-first-property> {
+  method get_first_property (Int() $kind, :$raw = False)
+    is also<get-first-property>
+  {
     my ICalPropertyKind $k = $kind;
 
     my $prop = i_cal_component_get_first_property($!icc, $k);
@@ -622,6 +630,15 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_merge_component($!icc, $comp_to_merge);
   }
 
+  method property_recurrence_is_excluded (
+    ICalTime() $dtstart,
+    ICalTime() $recurtime
+  )
+    is also<property-recurrence-is-excluded>
+  {
+    so i_cal_property_recurrence_is_excluded($!icc, $dtstart, $recurtime);
+  }
+
   method remove_component (ICalComponent() $child) is also<remove-component> {
     i_cal_component_remove_component($!icc, $child);
   }
@@ -714,7 +731,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
 
 }
 
-our ICalCompIterAncestry is export of Mu
+our subset ICalCompIterAncestry is export of Mu
   where ICalCompIter | ICalObjectAncestry;
 
 class ICal::GLib::Component::Iter is ICal::GLib::Object {
@@ -724,10 +741,10 @@ class ICal::GLib::Component::Iter is ICal::GLib::Object {
     self.setICalCompIter($comp-iter) if $comp-iter;
   }
 
-  method setICalCompIter(ICalCompIterAncestry $_)
+  method setICalCompIter(ICalCompIterAncestry $_) {
     my $to-parent;
 
-    $icci = do {
+    $!icci = do {
       when ICalCompIter {
         $to-parent = cast(ICalObject, $_);
         $_;
@@ -743,7 +760,7 @@ class ICal::GLib::Component::Iter is ICal::GLib::Object {
 
   method ICal::GLib::Raw::Definitions::ICalCompIter
     is also<ICalCompIter>
-  { $icci }
+  { $!icci }
 
   method new (ICalCompIterAncestry $comp-iter, :$ref = True) {
     return Nil unless $comp-iter;
