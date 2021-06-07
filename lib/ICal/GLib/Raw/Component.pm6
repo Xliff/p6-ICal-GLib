@@ -1,4 +1,6 @@
-use v6.cl
+use v6.c;
+
+use NativeCall;
 
 use GLib::Raw::Definitions;
 use ICal::GLib::Raw::Definitions;
@@ -92,7 +94,7 @@ sub i_cal_component_foreach_recurrence (
   ICalComponent $comp,
   ICalTime      $start,
   ICalTime      $end,
-                &callback (ICalComponent, ICalTimeSpan gpointer),
+                &callback (ICalComponent, ICalTimeSpan, gpointer),
   gpointer      $user_data
 )
   is native(ical-glib)
@@ -305,35 +307,12 @@ sub i_cal_comp_iter_prior (ICalCompIter $i)
   is export
 { * }
 
-sub i_cal_property_get_datetime_with_component (
-  ICalProperty  $prop,
-  ICalComponent $comp
-)
-  returns ICalTime
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_property_get_parent (ICalProperty $property)
-  returns ICalComponent
-  is native(ical-glib)
-  is export
-{ * }
-
 sub i_cal_property_recurrence_is_excluded (
   ICalComponent $comp,
   ICalTime      $dtstart,
   ICalTime      $recurtime
 )
   returns uint32
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_property_set_parent (
-  ICalProperty  $property,
-  ICalComponent $component
-)
   is native(ical-glib)
   is export
 { * }

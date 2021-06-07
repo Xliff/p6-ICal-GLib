@@ -45,7 +45,7 @@ sub i_cal_property_free (ICalProperty $prop)
 { * }
 
 sub i_cal_property_get_first_parameter (
-  ICalProperty      $prop, 
+  ICalProperty      $prop,
   ICalParameterKind $kind
 )
   returns ICalParameter
@@ -279,6 +279,31 @@ sub i_cal_property_take_parameter (
 { * }
 
 sub i_cal_property_take_value (ICalProperty $prop, ICalValue $value)
+  is native(ical-glib)
+  is export
+{ * }
+
+### /usr/include/libical-glib/i-cal-component.h
+
+sub i_cal_property_get_datetime_with_component (
+  ICalProperty  $prop,
+  ICalComponent $comp
+)
+  returns ICalTime
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_property_get_parent (ICalProperty $property)
+  returns ICalComponent
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_property_set_parent (
+  ICalProperty  $property,
+  ICalComponent $component
+)
   is native(ical-glib)
   is export
 { * }
