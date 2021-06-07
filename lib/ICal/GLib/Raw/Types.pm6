@@ -3,7 +3,7 @@ use v6;
 use GLib::Raw::Exports;
 use ICal::GLib::Raw::Exports;
 
-unit package GLib::Raw::Types;
+unit package ICal::GLib::Raw::Types;
 
 need GLib::Raw::Definitions;
 need GLib::Raw::Enums;
