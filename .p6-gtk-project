@@ -1,4 +1,4 @@
 prefix=ICal::GLib
 modules=ICal::GLib::Raw::Types
 backups=backup,bitbucket,google-backup
-hfile-prefix=((klass),:I_CAL_TYPE_PROPERTY,:ICalPropertyClass)):LIBICAL_ICAL_EXPORT
+hfile-prefix=((klass),:I_CAL_TYPE_ARRAY,:ICalArrayClass)):I_CAL_TYPE_TIMEZONE,:ICalTimezoneClass)):I_CAL_TYPE_PROPERTY,:ICalPropertyClass)):LIBICAL_ICAL_EXPORT
