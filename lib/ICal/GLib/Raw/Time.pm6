@@ -357,31 +357,6 @@ sub i_cal_time_set_year (ICalTime $timetype, gint $year)
   is export
 { * }
 
-sub i_cal_time_span_contains (
-  ICalTimeSpan $s,
-  ICalTimeSpan $container
-)
-  returns gint
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_time_span_new (
-  ICalTime $dtstart,
-  ICalTime $dtend,
-  gint     $is_busy
-)
-  returns ICalTimeSpan
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_time_span_overlaps (ICalTimeSpan $s1, ICalTimeSpan $s2)
-  returns gint
-  is native(ical-glib)
-  is export
-{ * }
-
 sub i_cal_time_start_doy_week (ICalTime $tt, gint $fdow)
   returns gint
   is native(ical-glib)
