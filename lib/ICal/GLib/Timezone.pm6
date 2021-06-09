@@ -2,6 +2,7 @@ use v6.c;
 
 use Method::Also;
 
+use ICal::Raw::Definitions;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Timezone;
 
@@ -38,7 +39,45 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     is also<ICalTimezone>
   { $!ictz }
 
-  method new {
+  method ICal::Raw::icaltimezone
+    is also<icaltimezone>
+  { cast(icaltimezone, self.get_native) }
+
+  multi method new (icaltimezone $native-ical-tz, :$raw = False) {
+    use NativeCall;
+    use ICal::Raw::Timezone;
+
+    # cw: Avaialble in ::Raw::Object, but shouldn't this conserve memory?
+    sub i_cal_object_construct (
+      GType,
+      icaltimezone,
+      &func,
+      gboolean,
+      GObject
+    )
+      is native(ical-glib)
+    { * }
+
+    my $gc = i_cal_object_construct(
+      self.get_type,
+      $native-ical-tz,
+      &icaltimezone_free,
+      0,
+      GObject
+    );
+
+    return $gc unless $raw;
+
+    samewith($gc);
+  }
+  multi method new (ICalTimezoneAncestry $timezone, :$ref = True) {
+    return Nil unless $timezone;
+
+    my $o = self.bless( :$timezone );
+    $o.ref if $ref;
+    $o;
+  }
+  multi method new {
     my $timezone = i_cal_timezone_new();
 
     $timezone ?? self.bless( :$timezone ) !! Nil;
