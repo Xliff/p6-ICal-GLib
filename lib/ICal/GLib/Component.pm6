@@ -2,6 +2,8 @@ use v6.c;
 
 use Method::Also;
 
+use ICal::Raw::Definitions;
+use ICal::Raw::Structs;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Component;
 
@@ -12,7 +14,7 @@ use ICal::GLib::Time;
 use ICal::GLib::Timezone;
 
 # Pre-definitions
-class ICal::GLib::Component::Iter { ... }
+class ICal::GLib::Component::Iter is ICal::GLib::Object { ... }
 
 our subset ICalComponentAncestry is export of Mu
   where ICalComponent | ICalObjectAncestry;
@@ -46,12 +48,43 @@ class ICal::GLib::Component is ICal::GLib::Object {
     is also<ICalComponent>
   { $!icc }
 
+  method ICal::Raw::Definitions::icalcomponent
+    is also<icalcomponent>
+  { cast(icalcomponent, self.get_native) }
+
+  multi method new (icalcomponent $native-ical-comp, :$raw = False) {
+    use NativeCall;
+    use ICal::Raw::Component;
+
+    # cw: Avaialble in ::Raw::Object, but shouldn't this conserve memory?
+    sub i_cal_object_construct (
+      GType,
+      icalcomponent,
+      &func,
+      gboolean,
+      GObject
+    )
+      is native(ical-glib)
+    { * }
+
+    my $gc = i_cal_object_construct(
+      self.get_type,
+      $native-ical-comp,
+      &icalcomponent_free,
+      0,
+      GObject
+    );
+
+    return $gc unless $raw;
+
+    samewith($gc);
+  }
   multi method new (ICalComponentAncestry $ical-component, :$ref = True) {
     return Nil unless $ical-component;
 
     my $o = self.bless( :$ical-component );
     $o.ref if $ref;
-    $o
+    $o;
   }
   multi method new (Int() $kind) {
     my ICalComponentKind $k = $kind;
@@ -169,6 +202,17 @@ class ICal::GLib::Component is ICal::GLib::Object {
     $ical-component ?? self.bless( :$ical-component ) !! Nil;
   }
 
+  method dtstart is rw
+    is also<
+      dt_start
+      dt-start
+    >
+  {
+    Proxy.new:
+      FETCH => -> $     { self.get_dtstart    },
+      STORE => -> $, \v { self.set_dtstart(v) }
+  }
+
   method dtend is rw
     is also<
       dt_end
@@ -207,6 +251,18 @@ class ICal::GLib::Component is ICal::GLib::Object {
     Proxy.new:
       FETCH => -> $     { self.get_recurrenceid    },
       STORE => -> $, \v { self.set_recurrencdid(v) }
+  }
+
+  method summary is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_summary    },
+      STORE => -> $, \v { self.set_summary(v) }
+  }
+
+  method uid is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_uid    },
+      STORE => -> $, \v { self.set_uid(v) }
   }
 
   method add_component (ICalComponent() $child) is also<add-component> {
@@ -578,12 +634,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
     ICalPropertyStatusEnum( i_cal_component_get_status($!icc) );
   }
 
-  method get_summary
-    is also<
-      get-summary
-      summary
-    >
-  {
+  method get_summary is also<get-summary> {
     i_cal_component_get_summary($!icc);
   }
 
@@ -603,12 +654,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
     unstable_get_type( self.^name, &i_cal_component_get_type, $n, $t );
   }
 
-  method get_uid
-    is also<
-      get-uid
-      uid
-    >
-  {
+  method get_uid is also<get-uid> {
     i_cal_component_get_uid($!icc);
   }
 
@@ -734,7 +780,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
 our subset ICalCompIterAncestry is export of Mu
   where ICalCompIter | ICalObjectAncestry;
 
-class ICal::GLib::Component::Iter is ICal::GLib::Object {
+class ICal::GLib::Component::Iter {
   has ICalCompIter $!icci;
 
   submethod BUILD (:$comp-iter) {
