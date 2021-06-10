@@ -173,7 +173,9 @@ class ICal::GLib::Value::Kind {
 
   method to_string (
     Int()               $kind
-  ) is also<to-string> {
+  )
+    is also<to-string>
+  {
     my ICalValueKind $k = $kind;
 
     i_cal_value_kind_to_string($k);
