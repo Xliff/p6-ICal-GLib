@@ -13,7 +13,6 @@ constant ical-glib is export = 'ical-glib',v3;
 
 class ICalArray      is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalCompIter   is repr<CPointer> does GLib::Roles::Pointers is export { }
-class ICalDuration   is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalParameter  is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalProperty   is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTime       is repr<CPointer> does GLib::Roles::Pointers is export { }
@@ -28,5 +27,13 @@ class ICalObject is repr<CStruct> does GLib::Roles::Pointers is export {
 }
 
 class ICalComponent is repr<CStruct> does GLib::Roles::Pointers is export {
+  HAS ICalObject $.parent;
+}
+
+class ICalPeriod is repr<CStruct> does GLib::Roles::Pointers is export {
+  HAS ICalObject $.parent;
+}
+
+class ICalDuration is repr<CStruct> does GLib::Roles::Pointers is export {
   HAS ICalObject $.parent;
 }
