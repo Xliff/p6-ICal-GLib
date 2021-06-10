@@ -18,6 +18,7 @@ class ICalProperty   is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTime       is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTimeSpan   is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTimezone   is repr<CPointer> does GLib::Roles::Pointers is export { }
+class ICalTrigger    is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalValue      is repr<CPointer> does GLib::Roles::Pointers is export { }
 
 
