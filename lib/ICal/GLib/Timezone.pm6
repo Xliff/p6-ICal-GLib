@@ -12,7 +12,7 @@ use ICal::GLib::Object;
 our subset ICalTimezoneAncestry is export of Mu
   where ICalTimezone | ICalObjectAncestry;
 
-class ICal::GLib::Timezone::Array { ... }
+class ICal::GLib::Timezone::Array is ICal::GLib::Array does Positional { ... }
 
 class ICal::GLib::Timezone is ICal::GLib::Object {
   has ICalTimezone $!ictz;
@@ -438,7 +438,7 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
 
 }
 
-class ICal::GLib::Timezone::Array is ICal::GLib::Array does Positional {
+class ICal::GLib::Timezone::Array does Positional {
 
   multi method new {
     my $array = i_cal_timezone_array_new();
