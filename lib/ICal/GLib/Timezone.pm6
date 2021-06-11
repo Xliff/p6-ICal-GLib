@@ -6,10 +6,13 @@ use ICal::Raw::Definitions;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Timezone;
 
+use ICal::GLib::Array;
 use ICal::GLib::Object;
 
 our subset ICalTimezoneAncestry is export of Mu
   where ICalTimezone | ICalObjectAncestry;
+
+class ICal::GLib::Timezone::Array { ... }
 
 class ICal::GLib::Timezone is ICal::GLib::Object {
   has ICalTimezone $!ictz;
@@ -83,7 +86,22 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     $timezone ?? self.bless( :$timezone ) !! Nil;
   }
 
-  method copy (:$raw = False) {
+  method builtin_tzdata (ICal::GLib::Timezone:U: )
+    is also<builtin-tzdata>
+    is rw
+  {
+    Proxy.new:
+      FETCH => -> $     { ICal::GLib::Timezone.get_builtin_tzdata    },
+      STORE => -> $, \v { ICal::GLib::Timezone.set_builtin_tzdata(v) }
+  }
+
+  method component (:$raw = False) is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_component(:$raw) },
+      STORE => -> $, \v { self.set_component(v)     }
+  }
+
+  method copy (:$raw = False) is also<clone> {
     my $c = i_cal_timezone_copy($!ictz);
 
     $c ??
@@ -178,7 +196,7 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
 
     # Transfer: none
     $a ??
-      ( $raw ?? $a !! ICal::GLib::Array.new($a) )
+      ( $raw ?? $a !! ICal::GLib::Timezone::Array.new($a) )
       !!
       Nil;
   }
@@ -195,20 +213,36 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     # cw: Note use of late binding to prevent circularity.
     # Transfer: full
     $c ??
-      ( $raw ?? $c !! ::('ICal::Component').new($c, :!ref) )
+      ( $raw ?? $c !! ::('ICal::GLib::Component').new($c, :!ref) )
       !!
       Nil;
   }
 
-  method get_display_name is also<get-display-name> {
+  method get_display_name
+    is also<
+      get-display-name
+      display_name
+      display-name
+    >
+  {
     i_cal_timezone_get_display_name($!ictz);
   }
 
-  method get_latitude is also<get-latitude> {
+  method get_latitude
+    is also<
+      get-latitude
+      latitude
+    >
+  {
     i_cal_timezone_get_latitude($!ictz);
   }
 
-  method get_location is also<get-location> {
+  method get_location
+    is also<
+      get-location
+      location
+    >
+  {
     i_cal_timezone_get_location($!ictz);
   }
 
@@ -222,11 +256,21 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     i_cal_timezone_get_location_from_vtimezone($component);
   }
 
-  method get_longitude is also<get-longitude> {
+  method get_longitude
+    is also<
+      get-longitude
+      longitude
+    >
+  {
     i_cal_timezone_get_longitude($!ictz);
   }
 
-  method get_tzid is also<get-tzid> {
+  method get_tzid
+    is also<
+      get-tzid
+      tzid
+    >
+  {
     i_cal_timezone_get_tzid($!ictz);
   }
 
@@ -236,7 +280,12 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     unstable_get_type( self.^name, &i_cal_timezone_get_type, $n, $t );
   }
 
-  method get_tznames is also<get-tznames> {
+  method get_tznames
+    is also<
+      get-tznames
+      tznames
+    >
+  {
     i_cal_timezone_get_tznames($!ictz);
   }
 
@@ -254,7 +303,12 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
       is also<get-utc-offset>
   { * }
 
-  multi method get_utc_offset ($tt) {
+  multi method get_utc_offset ($tt)
+    is also<
+      utc_offset
+      utc-offset
+    >
+  {
     samewith($tt, $, :all);
   }
   multi method get_utc_offset (ICalTime() $tt, $is_daylight is rw, :$all = False) {
@@ -271,7 +325,12 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
       is also<get-utc-offset-of-utc-time>
   { * }
 
-  multi method get_utc_offset_of_utc_time ($tt) {
+  multi method get_utc_offset_of_utc_time ($tt)
+    is also<
+      utc_offset_of_utc_time
+      utc-offset-of-utc-time
+    >
+  {
     samewith($tt, $, :all)
   }
   multi method get_utc_offset_of_utc_time (
@@ -293,7 +352,11 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
 
     :$raw = False
   )
-    is also<get-utc-timezone>
+    is also<
+      get-utc-timezone
+      utc_timezone
+      utc-timezone
+    >
   {
     my $utc = i_cal_timezone_get_utc_timezone();
 
@@ -363,31 +426,24 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     i_cal_timezone_set_component($!ictz, $comp);
   }
 
-  method set_tzid_prefix (
-    ICal::GLib::Timezone:U:
-
-    ICalComponent() $component
-  )
+  method set_tzid_prefix (ICal::GLib::Timezone:U: Str() $prefix)
     is also<set-tzid-prefix>
   {
-    i_cal_timezone_set_tzid_prefix($component);
+    i_cal_timezone_set_tzid_prefix($prefix);
   }
 
   method set_zone_directory (Str() $dir) is also<set-zone-directory> {
-    i_cal_timezone_set_zone_directory($!ictz, $dir);
+    i_cal_timezone_set_zone_directory($dir);
   }
 
 }
 
-
-use ICal::GLib::Array;
-
 class ICal::GLib::Timezone::Array is ICal::GLib::Array does Positional {
 
-  method new {
-    my $ical-array = i_cal_timezone_array_new();
+  multi method new {
+    my $array = i_cal_timezone_array_new();
 
-    $ical-array ?? self.bless( :$ical-array ) !! Nil;
+    $array ?? self.bless( :$array ) !! Nil;
   }
 
   method append_from_vtimezone (ICalComponent() $child)
@@ -400,7 +456,7 @@ class ICal::GLib::Timezone::Array is ICal::GLib::Array does Positional {
     my $tz = i_cal_timezone_array_element_at(self.ICalArray, $index);
 
     $tz ??
-      ( $raw ?? $tz !! ICal::Timezone.new($tz, :!ref) )
+      ( $raw ?? $tz !! ICal::GLib::Timezone.new($tz, :!ref) )
       !!
       Nil
   }
