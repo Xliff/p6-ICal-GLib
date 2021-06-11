@@ -80,8 +80,8 @@ class ICal::GLib::Value is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $kind) {
-    my ICalValueKind $k = $kind;
+  multi method new (Int() $knd, :$kind is required) {
+    my ICalValueKind $k = $knd;
 
     my $value = i_cal_value_new($k);
 
@@ -91,12 +91,17 @@ class ICal::GLib::Value is ICal::GLib::Object {
   method new_from_string (Int() $kind, Str $str) is also<new-from-string> {
     my ICalValueKind $k = $kind;
 
-    my $value = i_cal_value_new_from_string($!icv, $k, $str);
+    my $value = i_cal_value_new_from_string($k, $str);
 
     $value ?? self.bless( :$value ) !! Nil
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_value_as_ical_string($!icv);
   }
 
@@ -110,7 +115,7 @@ class ICal::GLib::Value is ICal::GLib::Object {
   }
 
   multi method compare (ICal::GLib::Value:D: ICalValue() $b) {
-    samewith($!icv, $b);
+    ICal::GLib::Value.compare($!icv, $b);
   }
   multi method compare (
     ICal::GLib::Value:U:
@@ -118,7 +123,7 @@ class ICal::GLib::Value is ICal::GLib::Object {
     ICalValue() $a,
     ICalValue() $b
   ) {
-    i_cal_value_compare($a, $b);
+    ICalParameterXliccomparetypeEnum( i_cal_value_compare($a, $b) );
   }
 
   method decode_ical_string (ICal::GLib::Value:U: Str() $data)
@@ -148,11 +153,13 @@ class ICal::GLib::Value is ICal::GLib::Object {
   }
 
   method isa {
-    so i_cal_value_isa($!icv);
+    my $k = i_cal_value_isa($!icv);
+
+    ICalValueKindEnum($k);
   }
 
   method isa_value is also<isa-value> {
-    i_cal_value_isa_value($!icv);
+    so i_cal_value_isa_value($!icv);
   }
 }
 
@@ -184,6 +191,6 @@ class ICal::GLib::Value::Kind {
   method from_string (Str() $str) is also<from-string> {
     my $k = i_cal_value_kind_from_string($str);
 
-    $k.defined ?? Nil !! ICalValueKindEnum($k);
+    $k.defined ?? ICalValueKindEnum($k) !! Nil;
   }
 }
