@@ -108,22 +108,60 @@ class ICal::GLib::Time is ICal::GLib::Object {
     $time ?? self.bless( :$time ) !! Nil
   }
 
+  # Returns and takes list of (Y, M, D)
   method date is rw {
     Proxy.new:
-      FETCH => -> $     { self.get_date    },
-      STORE => -> $, \v { self.set_date(v) }
+      FETCH => -> $     { self.get_date     },
+      STORE => -> $, \v { self.set_date(|v) }
   }
 
+  method day is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_day    },
+      STORE => -> $, \v { self.set_day(v) }
+  }
+
+  method hour is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_hour    },
+      STORE => -> $, \v { self.set_hour(v) }
+  }
+
+  method minute is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_minute    },
+      STORE => -> $, \v { self.set_minute(v) }
+  }
+
+  method month is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_month    },
+      STORE => -> $, \v { self.set_month(v) }
+  }
+
+  method second is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_second    },
+      STORE => -> $, \v { self.set_second(v) }
+  }
+
+  # Returns and takes list of (H, M, S)
   method time is rw {
     Proxy.new:
-      FETCH => -> $     { self.get_time    },
-      STORE => -> $, \v { self.set_time(v) }
+      FETCH => -> $     { self.get_time     },
+      STORE => -> $, \v { self.set_time(|v) }
   }
 
   method timezone is rw {
     Proxy.new:
       FETCH => -> $     { self.get_timezone    },
       STORE => -> $, \v { self.set_timezone(v) }
+  }
+
+  method year is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_year    },
+      STORE => -> $, \v { self.set_year(v) }
   }
 
   method add (ICalDuration() $d) {
@@ -316,7 +354,7 @@ class ICal::GLib::Time is ICal::GLib::Object {
 
     # Transfer: none
     $tz ??
-      ( $raw ?? $tz !! ICal::Timezone.new($tz) )
+      ( $raw ?? $tz !! ICal::GLib::Timezone.new($tz) )
       !!
       Nil;
   }
@@ -453,44 +491,11 @@ class ICal::GLib::Time is ICal::GLib::Object {
     i_cal_time_week_number($!ict);
   }
 
-}
-
-class ICal::GLib::Time::Span {
-  has ICalTimeSpan $!icts;
-
-  method new (ICalTime() $dtend, gint $is_busy) {
-    i_cal_time_span_new($!icts, $dtend, $is_busy);
-  }
-
-  multi method contains (ICal::GLib::Time::Span:D: ICalTimeSpan() $container) {
-    ICal::GLib::Time::Span.contains($!icts, $container);
-  }
-  multi method contains (
-    ICal::GLib::Time::Span:U:
-
-    ICalTimeSpan() $a,
-    ICalTimeSpan() $b
-  ) {
-    so i_cal_time_span_contains($a, $b);
-  }
-
-  multi method overlaps (ICal::GLib::Time::Span:D: ICalTimeSpan() $s2) {
-    ICal::GLib::Time::Span.overlaps($!icts, $s2);
-  }
-  multi method overlaps (
-    ICal::GLib::Time::Span:U:
-
-    ICalTimeSpan() $s1,
-    ICalTimeSpan() $s2
-  ) {
-    i_cal_time_span_overlaps($s2, $s2);
-  }
-
   # From i-cal-timezone.h
   method convert_timezone (ICalTimezone() $from_zone, ICalTimezone() $to_zone)
     is also<convert-timezone>
   {
-    ICal::GLib::Timezone.convert($!icts, $from_zone, $to_zone);
+    ICal::GLib::Timezone.convert_timezone($!ict, $from_zone, $to_zone);
   }
 
 }
