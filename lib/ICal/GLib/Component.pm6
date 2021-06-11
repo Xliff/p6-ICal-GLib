@@ -86,8 +86,8 @@ class ICal::GLib::Component is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $kind) {
-    my ICalComponentKind $k = $kind;
+  multi method new (Int() $knd, :$kind is required) {
+    my ICalComponentKind $k = $knd;
 
     my $ical-component = i_cal_component_new($k);
 
