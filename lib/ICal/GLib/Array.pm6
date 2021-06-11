@@ -104,7 +104,7 @@ class ICal::GLib::Array is ICal::GLib::Object {
     i_cal_array_remove_element_at($!ica, $p);
   }
 
-  method size {
+  method size is also<elems> {
     i_cal_array_size($!ica);
   }
 
