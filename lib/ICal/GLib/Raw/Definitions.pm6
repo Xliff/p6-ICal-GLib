@@ -16,6 +16,7 @@ class ICalCompIter   is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalGeo        is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalParameter  is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalProperty   is repr<CPointer> does GLib::Roles::Pointers is export { }
+class ICalRecurrence is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalReqstat    is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTime       is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalTimeSpan   is repr<CPointer> does GLib::Roles::Pointers is export { }
