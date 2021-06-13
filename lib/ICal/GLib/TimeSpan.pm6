@@ -173,7 +173,7 @@ class ICal::GLib::TimeSpan is ICal::GLib::Object {
     i_cal_time_span_set_end($!icts, $e);
   }
 
-  method set_is_busy (gboolean $is_busy) is also<set-is-busy> {
+  method set_is_busy (Int() $is_busy) is also<set-is-busy> {
     my gboolean $i = $is_busy.so.Int;
 
     i_cal_time_span_set_is_busy($!icts, $i);
