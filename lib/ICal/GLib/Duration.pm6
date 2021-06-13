@@ -22,7 +22,7 @@ class ICal::GLib::Duration is ICal::GLib::Object {
   method setICalDuration(ICalDurationAncestry $_) {
     my $to-parent;
 
-    $!icc = do {
+    $!icd = do {
       when ICalDuration {
         $to-parent = cast(ICalObject, $_);
         $_;
@@ -38,7 +38,7 @@ class ICal::GLib::Duration is ICal::GLib::Object {
 
   method ICal::GLib::Raw::Definitions::ICalDuration
     is also<ICalDuration>
-  { $!icc }
+  { $!icd }
 
   method ICal::Raw::Definitions::icaldurationtype
     is also<icaldurationtype>
@@ -84,51 +84,52 @@ class ICal::GLib::Duration is ICal::GLib::Object {
   }
 
   method new_bad_duration is also<new-bad-duration> {
-    my $duration = i_cal_duration_new_bad_duration($!icr);
+    my $duration = i_cal_duration_new_bad_duration();
 
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
   method new_from_int (gint $t) is also<new-from-int> {
-    my $duration = i_cal_duration_new_from_int($!icr, $t);
+    my gint $tt       = $t;
+    my      $duration = i_cal_duration_new_from_int($t);
 
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
-  method new_from_string (Str $str) is also<new-from-string> {
-    my $duration = i_cal_duration_new_from_string($!icr, $str);
+  method new_from_string (Str() $str) is also<new-from-string> {
+    my $duration = i_cal_duration_new_from_string($str);
 
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
   method new_null_duration is also<new-null-duration> {
-    my $duration = i_cal_duration_new_null_duration($!icr);
+    my $duration = i_cal_duration_new_null_duration();
 
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
   method as_ical_string is also<as-ical-string> {
-    i_cal_duration_as_ical_string($!icr);
+    i_cal_duration_as_ical_string($!icd);
   }
 
   method as_int is also<as-int> {
-    i_cal_duration_as_int($!icr);
+    i_cal_duration_as_int($!icd);
   }
 
   method get_days is also<get-days> {
-    i_cal_duration_get_days($!icr);
+    i_cal_duration_get_days($!icd);
   }
 
   method get_hours is also<get-hours> {
-    i_cal_duration_get_hours($!icr);
+    i_cal_duration_get_hours($!icd);
   }
 
   method get_minutes is also<get-minutes> {
-    i_cal_duration_get_minutes($!icr);
+    i_cal_duration_get_minutes($!icd);
   }
 
   method get_seconds is also<get-seconds> {
-    i_cal_duration_get_seconds($!icr);
+    i_cal_duration_get_seconds($!icd);
   }
 
   method get_type is also<get-type> {
@@ -138,55 +139,55 @@ class ICal::GLib::Duration is ICal::GLib::Object {
   }
 
   method get_weeks is also<get-weeks> {
-    i_cal_duration_get_weeks($!icr);
+    i_cal_duration_get_weeks($!icd);
   }
 
   method is_bad_duration is also<is-bad-duration> {
-    so i_cal_duration_is_bad_duration($!icr);
+    so i_cal_duration_is_bad_duration($!icd);
   }
 
   method is_neg is also<is-neg> {
-    so i_cal_duration_is_neg($!icr);
+    so i_cal_duration_is_neg($!icd);
   }
 
   method is_null_duration is also<is-null-duration> {
-    so i_cal_duration_is_null_duration($!icr);
+    so i_cal_duration_is_null_duration($!icd);
   }
 
   method set_days (Int() $days) is also<set-days> {
     my guint $d = $days;
 
-    i_cal_duration_set_days($!icr, $days);
+    i_cal_duration_set_days($!icd, $d);
   }
 
   method set_hours (Int() $hours) is also<set-hours> {
     my guint $h = $hours;
 
-    i_cal_duration_set_hours($!icr, $hours);
+    i_cal_duration_set_hours($!icd, $h);
   }
 
   method set_is_neg (Int() $is_neg) is also<set-is-neg> {
-    my gboolean = $is_neg.so.Int;
+    my gboolean $i = $is_neg.so.Int;
 
-    i_cal_duration_set_is_neg($!icr, $is_neg);
+    i_cal_duration_set_is_neg($!icd, $i);
   }
 
   method set_minutes (Int() $minutes) is also<set-minutes> {
     my guint $m = $minutes;
 
-    i_cal_duration_set_minutes($!icr, $minutes);
+    i_cal_duration_set_minutes($!icd, $m);
   }
 
   method set_seconds (Int() $seconds) is also<set-seconds> {
     my guint $s = $seconds;
 
-    i_cal_duration_set_seconds($!icr, $seconds);
+    i_cal_duration_set_seconds($!icd, $s);
   }
 
   method set_weeks (Int() $weeks) is also<set-weeks> {
     my guint $w = $weeks;
 
-    i_cal_duration_set_weeks($!icr, $weeks);
+    i_cal_duration_set_weeks($!icd, $w);
   }
 
 }
