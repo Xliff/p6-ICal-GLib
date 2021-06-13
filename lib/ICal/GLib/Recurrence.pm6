@@ -97,12 +97,20 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_clear($!icr);
   }
 
-  method day_day_of_week is also<day-day-of-week> {
-    ICalRecurrenceWeekdayEnum( i_cal_recurrence_day_day_of_week($!icr) );
+  method day_day_of_week (ICal::GLib::Recurrence:U: Int() $day)
+    is also<day-day-of-week>
+  {
+    my gshort $d = $day;
+
+    ICalRecurrenceWeekdayEnum( i_cal_recurrence_day_day_of_week($d) );
   }
 
-  method day_position is also<day-position> {
-    i_cal_recurrence_day_position($!icr);
+  method day_position (ICal::GLib::Recurrence:U: Int() $day)
+    is also<day-position>
+  {
+    my gshort $d = $day;
+
+    i_cal_recurrence_day_position($d);
   }
 
   method get_by_day (Int() $index) is also<get-by-day> {
@@ -115,7 +123,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_day_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -130,7 +138,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_hour_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -145,7 +153,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_minute_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -160,7 +168,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_month_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -175,7 +183,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_month_day_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -190,7 +198,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_second_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -205,7 +213,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_set_pos_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -220,7 +228,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_week_no_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -235,7 +243,7 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     my $a = i_cal_recurrence_get_by_year_day_array($!icr);
 
     $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, :!ref) )
+      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
       !!
       Nil;
   }
@@ -271,12 +279,20 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     ICalRecurrenceWeekdayEnum( i_cal_recurrence_get_week_start($!icr) );
   }
 
-  method month_is_leap is also<month-is-leap> {
-    so i_cal_recurrence_month_is_leap($!icr);
+  method month_is_leap (ICal::GLib::Recurrence:U: Int() $month)
+    is also<month-is-leap>
+  {
+    my gshort $m = $month;
+
+    so i_cal_recurrence_month_is_leap($m);
   }
 
-  method month_month is also<month-month> {
-    i_cal_recurrence_month_month($!icr);
+  method month_month (ICal::GLib::Recurrence:U: Int() $month)
+    is also<month-month>
+  {
+    my gshort $m = $month;
+
+    i_cal_recurrence_month_month($m);
   }
 
   method rscale_is_supported (ICal::GLib::Recurrence:U: )
@@ -436,6 +452,71 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     >
   {
     i_cal_recurrence_to_string($!icr);
+  }
+
+  method frequency_from_string (ICal::GLib::Recurrence:U: Str() $str)
+    is also<frequency-from-string>
+  {
+    ICalRecurrenceFrequencyEnum( i_cal_recurrence_frequency_from_string($str) );
+  }
+
+  method frequency_to_string (ICal::GLib::Recurrence:U: Int() $kind)
+    is also<frequency-to-string>
+  {
+    my ICalRecurrenceFrequency $k = $kind;
+
+    i_cal_recurrence_frequency_to_string($k);
+  }
+
+  method skip_from_string (ICal::GLib::Recurrence:U:  Str() $skip)
+    is also<skip-from-string>
+  {
+    ICalRecurrenceSkipEnum( i_cal_recurrence_skip_from_string($skip) );
+  }
+
+  method skip_to_string (ICal::GLib::Recurrence:U: Int() $skip)
+    is also<skip-to-string>
+  {
+    my ICalRecurrenceSkip $s = $skip;
+
+    i_cal_recurrence_skip_to_string($s);
+  }
+
+  method weekday_from_string (ICal::GLib::Recurrence:U: Str() $str)
+    is also<weekday-from-string>
+  {
+    ICalRecurrenceWeekdayEnum( i_cal_recurrence_weekday_from_string($str) );
+  }
+
+  method weekday_to_string (ICal::GLib::Recurrence:U: Int() $kind)
+    is also<weekday-to-string>
+  {
+    my ICalRecurrenceWeekday $k = $kind;
+
+    i_cal_recurrence_weekday_to_string($k);
+  }
+
+}
+
+class ICal::GLib::Recur {
+  also does GLib::Roles::StaticClass;
+
+  method expand_recurrence (
+    Str() $rule,
+    Int() $start,
+    Int() $count,
+          :$raw   = False
+  )
+    is also<expand-recurrence>
+  {
+    my time_t $s  = $start;
+    my gint   $c  = $count;
+    my        $ex = i_cal_recur_expand_recurrence($rule, $s, $c);
+
+    $ex ??
+      ( $raw ?? $ex !! GLib::Array.new($ex) )
+      !!
+      Nil;
   }
 
 }
