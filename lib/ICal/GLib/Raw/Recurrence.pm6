@@ -385,3 +385,47 @@ sub i_cal_recurrence_to_string (ICalRecurrence $recur)
   is native(ical-glib)
   is export
 { * }
+
+### /usr/include/libical-glib/i-cal-recur.h
+
+sub i_cal_recur_expand_recurrence (Str $rule, time_t $start, gint $count)
+  returns GArray
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_frequency_from_string (Str $str)
+  returns ICalRecurrenceFrequency
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_frequency_to_string (ICalRecurrenceFrequency $kind)
+  returns Str
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_skip_from_string (Str $str)
+  returns ICalRecurrenceSkip
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_skip_to_string (ICalRecurrenceSkip $kind)
+  returns Str
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_weekday_from_string (Str $str)
+  returns ICalRecurrenceWeekday
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_recurrence_weekday_to_string (ICalRecurrenceWeekday $kind)
+  returns Str
+  is native(ical-glib)
+  is export
+{ * }
