@@ -1,4 +1,4 @@
 prefix=ICal::GLib
 modules=ICal::GLib::Raw::Types
 backups=backup,bitbucket,google-backup
-hfile-prefix=\(\(klass\)\,:I_CAL_TYPE_<[A..Z]>+\,:ICal<[A..Z]><[a..z]>+Class\)\):LIBICAL_ICAL_EXPORT
+hfile-prefix=\(\(klass\)\,:I_CAL_TYPE_[ [ <[A..Z]>+ ]+ % '_' ]\,:ICal[ <[A..Z]><[a..z]>+ ]+Class\)\):LIBICAL_ICAL_EXPORT
