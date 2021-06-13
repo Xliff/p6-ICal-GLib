@@ -1,14 +1,16 @@
 use v6.c;
 
-use ICal::Raw::Defintions;
+use Method::Also;
+
+use ICal::Raw::Definitions;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::RecurIterator;
 
 use ICal::GLib::Object;
 use ICal::GLib::Time;
 
-our subset ICalRecurIterAncestry is export of Mu
-  where ICalRecurIter | ICalObjectAncestry;
+our subset ICalRecurIteratorAncestry is export of Mu
+  where ICalRecurIterator | ICalObjectAncestry;
 
 class ICal::GLib::RecurIterator is ICal::GLib::Object {
   has ICalRecurIterator $!icri;
@@ -17,30 +19,30 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
     self.setICalRecurIter($iter) if $iter;
   }
 
-  method setICalRecurIter(ICalRecurIterAncestry $_) {
+  method setICalRecurIter(ICalRecurIteratorAncestry $_) {
     my $to-parent;
 
-    $!icc = do {
-      when ICalRecurIter {
+    $!icri = do {
+      when ICalRecurIterator {
         $to-parent = cast(ICalObject, $_);
         $_;
       }
 
       default {
         $to-parent = $_;
-        cast(ICalRecurIter, $_);
+        cast(ICalRecurIterator, $_);
       }
     }
     self.setICalObject($to-parent);
   }
 
-  method ICal::GLib::Raw::Definitions::ICalRecurIter
-    is also<ICalRecurIter>
-  { $!icc }
+  method ICal::GLib::Raw::Definitions::ICalRecurIterator
+    is also<ICalRecurIterator>
+  { $!icri }
 
-  method ICal::Raw::Definitions::ICalRecurIter
-    is also<icalrecuritertype>
-  { cast(ICalRecurIter, self.get_native) }
+  method ICal::Raw::Definitions::icalrecur_iterator
+    is also<icalrecur_iterator>
+  { cast(icalrecur_iterator, self.get_native) }
 
   multi method new (icalrecur_iterator $native-iter, :$raw = False) {
     use NativeCall;
@@ -49,7 +51,7 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
     # cw: Avaialble in ::Raw::Object, but shouldn't this conserve memory?
     sub i_cal_object_construct (
       GType,
-      icalrecur_iterrator,
+      icalrecur_iterator,
       &func,
       gboolean,
       GObject
@@ -69,25 +71,24 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
 
     samewith($gc);
   }
-  multi method new (ICalRecurIterAncestry $iter, :$ref = True) {
+  multi method new (ICalRecurIteratorAncestry $iter, :$ref = True) {
     return Nil unless $iter;
 
     my $o = self.bless( :$iter );
     $o.ref if $ref;
     $o;
   }
-
-  method new (ICalTime() $dtstart) {
-    my $iter = i_cal_recur_iterator_new($!icr, $dtstart);
+  multi method new (ICalTime() $dtstart, :start-time(:$start) is required) {
+    my $iter = i_cal_recur_iterator_new($!icri, $dtstart);
 
     $iter ?? self.bless( :$iter ) !! Nil;
   }
 
   method free {
-    i_cal_recur_iterator_free($!icr);
+    i_cal_recur_iterator_free($!icri);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type( self.^name, &i_cal_recur_iterator_get_type, $n, $t );
@@ -95,7 +96,7 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
 
 
   method next (:$raw = False) {
-    my $t = i_cal_recur_iterator_next($!icr);
+    my $t = i_cal_recur_iterator_next($!icri);
 
     $t ??
       ( $raw ?? $t !! ICal::GLib::Time.new($t, :!ref) )
@@ -103,8 +104,8 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
       Nil
   }
 
-  method set_start (ICalTime() $start) {
-    i_cal_recur_iterator_set_start($!icr, $start);
+  method set_start (ICalTime() $start) is also<set-start> {
+    i_cal_recur_iterator_set_start($!icri, $start);
   }
 
 
