@@ -120,12 +120,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_day_array (:$raw = False) is also<get-by-day-array> {
-    my $a = i_cal_recurrence_get_by_day_array($!icr);
+    return i_cal_recurrence_get_by_day_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_day;
   }
 
   method get_by_hour (Int() $index) is also<get-by-hour> {
@@ -135,12 +133,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_hour_array (:$raw = False) is also<get-by-hour-array> {
-    my $a = i_cal_recurrence_get_by_hour_array($!icr);
+    return i_cal_recurrence_get_by_hour_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_hour;
   }
 
   method get_by_minute (Int() $index) is also<get-by-minute> {
@@ -150,12 +146,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_minute_array (:$raw = False) is also<get-by-minute-array> {
-    my $a = i_cal_recurrence_get_by_minute_array($!icr);
+    my $a = i_cal_recurrence_get_by_minute_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_minute;
   }
 
   method get_by_month (Int() $index) is also<get-by-month> {
@@ -165,12 +159,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_month_array (:$raw = False) is also<get-by-month-array> {
-    my $a = i_cal_recurrence_get_by_month_array($!icr);
+    return i_cal_recurrence_get_by_month_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_month;
   }
 
   method get_by_month_day (Int() $index) is also<get-by-month-day> {
@@ -180,12 +172,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_month_day_array (:$raw = False) is also<get-by-month-day-array> {
-    my $a = i_cal_recurrence_get_by_month_day_array($!icr);
+    return i_cal_recurrence_get_by_month_day_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_month_day;
   }
 
   method get_by_second (Int() $index) is also<get-by-second> {
@@ -215,12 +205,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_set_pos_array (:$raw = False) is also<get-by-set-pos-array> {
-    my $a = i_cal_recurrence_get_by_set_pos_array($!icr);
+    return i_cal_recurrence_get_by_set_pos_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_set_pos;
   }
 
   method get_by_week_no (Int() $index) is also<get-by-week-no> {
@@ -230,12 +218,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_week_no_array (:$raw = False) is also<get-by-week-no-array> {
-    my $a = i_cal_recurrence_get_by_week_no_array($!icr);
+    return i_cal_recurrence_get_by_week_no_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_week_no;
   }
 
   method get_by_year_day (Int() $index) is also<get-by-year-day> {
@@ -245,12 +231,10 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
   }
 
   method get_by_year_day_array (:$raw = False) is also<get-by-year-day-array> {
-    my $a = i_cal_recurrence_get_by_year_day_array($!icr);
+    return i_cal_recurrence_get_by_year_day_array($!icr) if $raw;
 
-    $a ??
-      ( $raw ?? $a !! GLib::Array.new($a, type => gshort, :!ref) )
-      !!
-      Nil;
+    my $ns = cast(icalrecurrencetype, self.get_native);
+    $ns.by_year_day;
   }
 
   method get_count is also<get-count> {
@@ -317,6 +301,27 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
       Nil;
   }
 
+  method !positionalToGArray ($values is copy) {
+    if $values ~~ Positional && $values !~~ GLib::Array {
+      $values = GLib::Array.new(
+        # Values are shorts, written into 16bit elements stored as pointer
+        # addresses.
+        $values.map( *.&clamp( intRange( bits => 16 ) ) ),
+        typed => gshort,
+      );
+
+      # cw: Coercion to Array still may not work.
+      # $values.Array.gist.say;
+    }
+    if $values.^lookup('GArray') -> $m {
+      $values = $m($values);
+    }
+    die "$values must be GArray-compatible! { $values.^name } is not."
+      unless $values ~~ GArray;
+
+    $values;
+  }
+
   method set_by_day (Int() $index, Int() $value) is also<set-by-day> {
     my guint  $i = $index;
     my gshort $v = $value;
@@ -324,23 +329,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_day($!icr, $i, $v);
   }
 
-  proto method set_by_day_array (|)
-    is also<set-by-day-array>
-  { * }
-
-  multi method set_by_day_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
+  method set_by_day_array ($values) is also<set-by-day-array> {
+    i_cal_recurrence_set_by_day_array(
+      $!icr,
+      self!positionalToGArray($values)
     );
-  }
-  multi method set_by_day_array (GArray() $values) {
-    i_cal_recurrence_set_by_day_array($!icr, $values);
   }
 
   multi method set_by_hour (Int() $index, Int() $value) is also<set-by-hour> {
@@ -350,23 +343,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_hour($!icr, $i, $v);
   }
 
-  proto method set_by_hour_array (|)
-    is also<set-by-hour-array>
-  { * }
-
-  multi method set_by_hour_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_hour_array (GArray() $values) {
-    i_cal_recurrence_set_by_hour_array($!icr, $values);
+  method set_by_hour_array ($values) is also<set-by-hour-array> {
+    i_cal_recurrence_set_by_hour_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_by_minute (Int() $index, Int() $value) is also<set-by-minute> {
@@ -376,23 +357,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_minute($!icr, $i, $v);
   }
 
-  proto method set_by_minute_array (|)
-    is also<set-by-minute-array>
-  { * }
-
-  multi method set_by_minute_array (@values) {
-    samewith(
-      # Values are shorts, written into 16bit elements stored as pointer
-      # addresses.
-      GLib::Array.new(
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
+  method set_by_minute_array ($values) is also<set-by-minute-array> {
+    i_cal_recurrence_set_by_minute_array(
+      $!icr,
+      self!positionalToGArray($values)
     );
-  }
-  multi method set_by_minute_array (GArray() $values) {
-    i_cal_recurrence_set_by_minute_array($!icr, $values);
   }
 
   method set_by_month (Int() $index, Int() $value) is also<set-by-month> {
@@ -402,23 +371,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_month($!icr, $i, $v);
   }
 
-  proto method set_by_month_array (|)
-    is also<set-by-month-array>
-  { * }
-
-  multi method set_by_month_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_month_array (GArray() $values) {
-    i_cal_recurrence_set_by_month_array($!icr, $values);
+  method set_by_month_array ($values) is also<set-by-month-array> {
+    i_cal_recurrence_set_by_month_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_by_month_day (Int() $index, Int() $value)
@@ -430,28 +387,18 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_month_day($!icr, $i, $v);
   }
 
-  proto method set_by_month_day_array (|)
-    is also<set-by-month-day-array>
-  { * }
-
-  multi method set_by_month_day_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_month_day_array (GArray() $values) {
-    i_cal_recurrence_set_by_month_day_array($!icr, $values);
+  method set_by_month_day_array ($values) is also<set-by-month-day-array> {
+    i_cal_recurrence_set_by_month_day_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_by_second (Int() $index, Int() $value) is also<set-by-second> {
     my guint  $i = $index;
     my gshort $v = $value;
+
+    say "set_by_second position $i value { $value } / { $v }";
 
     i_cal_recurrence_set_by_second($!icr, $i, $v);
   }
@@ -460,23 +407,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     is also<set-by-second-array>
   { * }
 
-  multi method set_by_second_array ($values is copy) {
-    if $values ~~ Positional && $values !~~ GLib::Array {
-      $values = GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        $values.map( *.&clamp(0..255) ),
-        typed => gshort,
-      );
-    }
-    if $values.^lookup('GArray') -> $m {
-      $values = $m($values);
-    }
-    die "$values must be GArray-compatible! { $values.^name } is not."
-      unless $values ~~ GArray;
-
-    say 'Setting via GArray...';
-    i_cal_recurrence_set_by_second_array($!icr, $values);
+  multi method set_by_second_array ($values) {
+    i_cal_recurrence_set_by_second_array(
+      $!icr,
+      self!positionalToGArray($values)
+    )
   }
 
   method set_by_set_pos (Int() $index, Int() $value) is also<set-by-set-pos> {
@@ -486,23 +421,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_set_pos($!icr, $i, $v);
   }
 
-  proto method set_by_set_pos_array (|)
-    is also<set-by-set-pos-array>
-  { * }
-
-  multi method set_by_set_pos_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_set_pos_array (GArray() $values) {
-    i_cal_recurrence_set_by_set_pos_array($!icr, $values);
+  multi method set_by_set_pos_array ($values) is also<set-by-set-pos-array> {
+    i_cal_recurrence_set_by_set_pos_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_by_week_no (Int() $index, Int() $value) is also<set-by-week-no> {
@@ -512,23 +435,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_week_no($!icr, $i, $v);
   }
 
-  proto method set_by_week_no_array (|)
-    is also<set-by-week-no-array>
-  { * }
-
-  multi method set_by_week_no_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_week_no_array (GArray() $values)  {
-    i_cal_recurrence_set_by_week_no_array($!icr, $values);
+  method set_by_week_no_array ($values)  is also<set-by-week-no-array > {
+    i_cal_recurrence_set_by_week_no_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_by_year_day (Int() $index, Int() $value) is also<set-by-year-day> {
@@ -538,23 +449,11 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_set_by_year_day($!icr, $i, $v);
   }
 
-  proto method set_by_year_day_array (|)
-    is also<set-by-year-day-array>
-  { * }
-
-  multi method set_by_year_day_array (@values) {
-    samewith(
-      GLib::Array.new(
-        # Values are shorts, written into 16bit elements stored as pointer
-        # addresses.
-        @values.map( *.&clamp(0..255) ),
-        typed => gshort,
-        :direct
-      )
-    )
-  }
-  multi method set_by_year_day_array (GArray() $values) {
-    i_cal_recurrence_set_by_year_day_array($!icr, $values);
+  method set_by_year_day_array ($values) is also<set-by-year-day-array> {
+    i_cal_recurrence_set_by_year_day_array(
+      $!icr,
+      self!positionalToGArray($values)
+    );
   }
 
   method set_count (Int() $count) is also<set-count> {
@@ -654,7 +553,7 @@ class ICal::GLib::Recur {
     my        $ex = i_cal_recur_expand_recurrence($rule, $s, $c);
 
     $ex ??
-      ( $raw ?? $ex !! GLib::Array.new($ex) )
+      ( $raw ?? $ex !! GLib::Array.new($ex, typed => gulong) )
       !!
       Nil;
   }
