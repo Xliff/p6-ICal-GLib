@@ -592,7 +592,7 @@ our enum ICalProperty_ClassEnum is export (
   I_CAL_CLASS_NONE         =>         ICAL_CLASS_NONE.Int,
 );
 
-constant ICalRecurrenceArrayMaxValues is export := guint32;
+constant ICalRecurrenceArrayMaxValues is export := gshort;
 our enum ICalRecurrenceArrayMaxValuesEnum is export (
   I_CAL_RECURRENCE_ARRAY_MAX => ICAL_RECURRENCE_ARRAY_MAX.Int,
 );
