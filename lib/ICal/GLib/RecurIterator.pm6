@@ -78,8 +78,11 @@ class ICal::GLib::RecurIterator is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (ICalTime() $dtstart, :start-time(:$start) is required) {
-    my $iter = i_cal_recur_iterator_new($!icri, $dtstart);
+  multi method new (
+    ICalRecurrence() $recurrence,
+    ICalTime()       $dtstart
+  ) {
+    my $iter = i_cal_recur_iterator_new($recurrence, $dtstart);
 
     $iter ?? self.bless( :$iter ) !! Nil;
   }
