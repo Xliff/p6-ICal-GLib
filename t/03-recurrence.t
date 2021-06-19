@@ -6,6 +6,7 @@ use ICal::GLib::Raw::Types;
 use ICal::GLib::Recurrence;
 
 constant IGR = ICal::GLib::Recurrence;
+plan 122;
 
 my $weekday = IGR.day-day-of-week(0);
 is $weekday,                        I_CAL_NO_WEEKDAY,                   '.day-day-of-week returns I_CAL_NO_WEEKDAY';
@@ -68,10 +69,6 @@ ok $by-set-pos.elems ==(367, 386).any,                                  'BySetPo
   is $recurrence.get-by-second(1),     101,                               'Recurrence .get-by-second index 1 is 101';
   is $recurrence.get-by-second(2),     I_CAL_RECURRENCE_ARRAY_MAX.Int,    'Recurrence .get-by-second index 2 is I_CAL_RECURRENCE_ARRAY_MAX (Int)';
   $array = $recurrence.get-by-second-array;
-
-  diag "A: { $array.Array(:raw).map({ .defined ?? .gist !! 0 }) }";
-  diag "A.elems: { $array.elems }";;
-
   is $array[0],                        100,                               'Recurrence .get-by-second index 0 is 100';
   is $array[1],                        101,                               'Recurrence .get-by-second index 1 is 101';
   is $array[2],                        I_CAL_RECURRENCE_ARRAY_MAX.Int,    'Recurrence .get-by-second index 2 is I_CAL_RECURRENCE_ARRAY_MAX (Int)';
@@ -238,25 +235,26 @@ my $timetype    = $iter.next;
 my ($day, $ref) = ($timetype.day, 1);
 
 while $day {
-  is $day,                             $ref,                              "Day == Ref (idx {$ref}) while looping";
+  is $day,                             $ref,                              "Day ({ $day }) == Ref (idx {$ref}) while looping";
   $ref++;
-  ($timetype, $day) = ($iter.next, $timetype.day);
+  $timetype = $iter.next;
+  $day = $timetype.day;
 }
-#
-# $recurrence = ICal::GLib::Recurrence.new-from-string($string);
-# $start      = ICal::GLib::Time.new-from-string('20161224T000000Z');
-# $iter       = ICal::GLib::RecurIterator.new($recurrence, $start);
-#
-# # Note reuse of start, since the last assignment is no longer necessary after
-# # init of $iter
-# $start      = ICal::GLib::Time.new-from-string('20181224T000000Z');
-# is $iter.set-start($start),          0,                                 'Could not .set-start on an ivalid start date';
-#
-# $recurrence = ICal::GLib::Recurrence.new-from-string('FREQ=YEARLY');
-# $start      = ICal::GLib::Time.new-from-string('20161224T000000Z');
-# $iter       = ICal::GLib::RecurIterator.new($recurrence, $start);
-# # Reuse, again
-# $start      = ICal::GLib::Time.new-from-string('20181224T000000Z');
-# is $iter.set-start($start),          1,                                 '.set-start can be used on a valid start date';
-# is $iter.next,                       2018,                              'Iter starts properly with value of 2018';
-# is $iter.next,                       2019,                              'Iter\'s next value is 2019';
+
+$recurrence = ICal::GLib::Recurrence.new-from-string('FREQ=YEARLY;COUNT=10');
+$start      = ICal::GLib::Time.new-from-string('20161224T000000Z');
+$iter       = ICal::GLib::RecurIterator.new($recurrence, $start);
+
+# Note reuse of start, since the last assignment is no longer necessary after
+# init of $iter
+$start      = ICal::GLib::Time.new-from-string('20181224T000000Z');
+is $iter.set-start($start),          0,                                 'Could not .set-start on an invalid start date';
+
+$recurrence = ICal::GLib::Recurrence.new-from-string('FREQ=YEARLY');
+$start      = ICal::GLib::Time.new-from-string('20161224T000000Z');
+$iter       = ICal::GLib::RecurIterator.new($recurrence, $start);
+# Reuse, again
+$start      = ICal::GLib::Time.new-from-string('20181224T000000Z');
+is $iter.set-start($start),          1,                                 '.set-start can be used on a valid start date';
+is $iter.next.year,                  2018,                              'Iter starts properly with value of 2018';
+is $iter.next.year,                  2019,                              'Iter\'s next value is 2019';
