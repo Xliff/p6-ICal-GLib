@@ -6,6 +6,7 @@ use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Period;
 
 use ICal::GLib::Object;
+use ICal::GLib::Time;
 
 our subset ICalPeriodAncestry is export of Mu
   where ICalPeriod | ICalObjectAncestry;
