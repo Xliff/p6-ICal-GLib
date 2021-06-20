@@ -5,6 +5,7 @@ use Method::Also;
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Period;
 
+use ICal::GLib::Duration;
 use ICal::GLib::Object;
 use ICal::GLib::Time;
 
@@ -113,7 +114,12 @@ class ICal::GLib::Period is ICal::GLib::Object {
       STORE => -> $, \v { self.set_start(v) }
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_period_as_ical_string($!icp);
   }
 
