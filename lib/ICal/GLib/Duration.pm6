@@ -108,11 +108,21 @@ class ICal::GLib::Duration is ICal::GLib::Object {
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_duration_as_ical_string($!icd);
   }
 
-  method as_int is also<as-int> {
+  method as_int
+    is also<
+      as-int
+      Int
+    >
+  {
     i_cal_duration_as_int($!icd);
   }
 

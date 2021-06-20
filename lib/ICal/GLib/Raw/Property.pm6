@@ -115,23 +115,6 @@ sub i_cal_parameter_value_to_value_kind (ICalParameterValue $value)
   is export
 { * }
 
-sub i_cal_value_get_parent (ICalValue $value)
-  returns ICalProperty
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_value_kind_to_property_kind (ICalValueKind $kind)
-  returns ICalPropertyKind
-  is native(ical-glib)
-  is export
-{ * }
-
-sub i_cal_value_set_parent (ICalValue $value, ICalProperty $property)
-  is native(ical-glib)
-  is export
-{ * }
-
 sub i_cal_property_isa (ICalProperty $property)
   returns ICalPropertyKind
   is native(ical-glib)

@@ -438,7 +438,7 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
 
 }
 
-class ICal::GLib::Timezone::Array {
+class ICal::GLib::Timezone::Array does Positional {
 
   multi method new {
     my $array = i_cal_timezone_array_new();

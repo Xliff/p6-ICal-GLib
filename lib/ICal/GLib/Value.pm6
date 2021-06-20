@@ -142,6 +142,15 @@ class ICal::GLib::Value is ICal::GLib::Object {
     i_cal_value_free($!icv);
   }
 
+  method get_parent (:$raw = False) {
+    my $p = i_cal_value_get_parent($!icv);
+
+    $p ??
+      ( $raw ?? $p !! ::('ICal::GLib::Property').new($p, :!ref) )
+      !!
+      Nil;
+  }
+
   method get_type is also<get-type> {
     state ($n, $t);
 
@@ -161,6 +170,10 @@ class ICal::GLib::Value is ICal::GLib::Object {
   method isa_value is also<isa-value> {
     so i_cal_value_isa_value($!icv);
   }
+
+  method set_parent (ICalProperty() $property) {
+    i_cal_value_set_parent($!icv, $property);
+  }
 }
 
 use GLib::Roles::StaticClass;
@@ -176,6 +189,12 @@ class ICal::GLib::Value::Kind {
     my ICalValueKind $k = $kind;
 
     so i_cal_value_kind_is_valid($k);
+  }
+
+  method to_property_kind (Int() $kind) {
+    my ICalValueKind $k = $kind;
+
+    i_cal_value_kind_to_property_kind($k);
   }
 
   method to_string (
