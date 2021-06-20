@@ -98,3 +98,22 @@ sub i_cal_value_new_from_string (ICalValueKind $kind, Str $str)
   is native(ical-glib)
   is export
 { * }
+
+### /usr/include/libical-glib/i-cal-property.h
+
+sub i_cal_value_get_parent (ICalValue $value)
+  returns ICalProperty
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_value_kind_to_property_kind (ICalValueKind $kind)
+  returns ICalPropertyKind
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_value_set_parent (ICalValue $value, ICalProperty $property)
+  is native(ical-glib)
+  is export
+{ * }
