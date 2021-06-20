@@ -1,5 +1,7 @@
 use v6.c;
 
+use Method::Also;
+
 use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Parameter;
 
@@ -33,9 +35,11 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
   }
 
   method ICal::GLib::Raw::Definitions::ICalParameter
+    is also<ICalParameter>
   { $!icp }
 
   method ICal::Raw::Definitions::icalparameter
+    is also<icalparameter>
   { cast(icalparameter, self.get_native) }
 
   multi method new (icalparameter $native-parameter, :$raw = False) {
@@ -79,13 +83,15 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     $ical-parameter ?? self.bless( :$ical-parameter ) !! Nil;
   }
 
-  method new_from_string (Str() $value) {
+  method new_from_string (Str() $value) is also<new-from-string> {
     my $ical-parameter = i_cal_parameter_new_from_string($value);
 
     $ical-parameter ?? self.bless( :$ical-parameter ) !! Nil;
   }
 
-  method new_from_value_string (Int() $kind, Str() $value) {
+  method new_from_value_string (Int() $kind, Str() $value)
+    is also<new-from-value-string>
+  {
     my ICalParameterKind $k = $kind;
 
     my $ical-parameter = i_cal_parameter_new_from_value_string($k, $value);
@@ -93,7 +99,36 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     $ical-parameter ?? self.bless( :$ical-parameter ) !! Nil;
   }
 
-  method as_ical_string {
+  method iana_name is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_iana_name    },
+      STORE => -> $, \v { self.set_iana_name(v) }
+  }
+
+  method iana_value is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_iana_value    },
+      STORE => -> $, \v { self.set_iana_value(v) }
+  }
+
+  method xname is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_xname    },
+      STORE => -> $, \v { self.set_xname(v) }
+  }
+
+  method xvalue is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_xvalue    },
+      STORE => -> $, \v { self.set_xvalue(v) }
+  }
+
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_parameter_as_ical_string($!icp);
   }
 
@@ -110,29 +145,29 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     i_cal_parameter_free($!icp);
   }
 
-  method get_iana_name {
+  method get_iana_name is also<get-iana-name> {
     i_cal_parameter_get_iana_name($!icp);
   }
 
-  method get_iana_value {
+  method get_iana_value is also<get-iana-value> {
     i_cal_parameter_get_iana_value($!icp);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type( self.^name, &i_cal_parameter_get_type, $n, $t );
   }
 
-  method get_xname {
+  method get_xname is also<get-xname> {
     i_cal_parameter_get_xname($!icp);
   }
 
-  method get_xvalue {
+  method get_xvalue is also<get-xvalue> {
     i_cal_parameter_get_xvalue($!icp);
   }
 
-  method has_same_name (ICalParameter() $param2) {
+  method has_same_name (ICalParameter() $param2) is also<has-same-name> {
     i_cal_parameter_has_same_name($!icp, $param2);
   }
 
@@ -140,23 +175,23 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     ICalParameterKindEnum( i_cal_parameter_isa($!icp) );
   }
 
-  method isa_parameter {
+  method isa_parameter is also<isa-parameter> {
     so i_cal_parameter_isa_parameter($!icp);
   }
 
-  method set_iana_name (Str() $v) {
+  method set_iana_name (Str() $v) is also<set-iana-name> {
     i_cal_parameter_set_iana_name($!icp, $v);
   }
 
-  method set_iana_value (Str() $v) {
+  method set_iana_value (Str() $v) is also<set-iana-value> {
     i_cal_parameter_set_iana_value($!icp, $v);
   }
 
-  method set_xname (Str() $v) {
+  method set_xname (Str() $v) is also<set-xname> {
     i_cal_parameter_set_xname($!icp, $v);
   }
 
-  method set_xvalue (Str() $v) {
+  method set_xvalue (Str() $v) is also<set-xvalue> {
     i_cal_parameter_set_xvalue($!icp, $v);
   }
 
@@ -165,17 +200,17 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
 class ICal::GLib::Parameter::Kind {
   also does GLib::Roles::StaticClass;
 
-  method from_string (Str() $str) {
+  method from_string (Str() $str) is also<from-string> {
     ICalParameterKindEnum( i_cal_parameter_kind_from_string($str) );
   }
 
-  method is_valid (Int() $kind) {
+  method is_valid (Int() $kind) is also<is-valid> {
     my ICalParameterKind $k = $kind;
 
     i_cal_parameter_kind_is_valid($k);
   }
 
-  method to_string (Int() $kind) {
+  method to_string (Int() $kind) is also<to-string> {
     my ICalParameterKind $k = $kind;
 
     i_cal_parameter_kind_to_string($k);
