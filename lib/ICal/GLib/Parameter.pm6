@@ -111,6 +111,12 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
       STORE => -> $, \v { self.set_iana_value(v) }
   }
 
+  method parent is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_parent    },
+      STORE => -> $, \v { self.set_parent(v) }
+  }
+
   method xname is rw {
     Proxy.new:
       FETCH => -> $     { self.get_xname    },
@@ -136,7 +142,7 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     my $c = i_cal_parameter_clone($!icp);
 
     $c ??
-      ( $raw ?? $c !! ICal::GLib::Property.new($c, :!ref) )
+      ( $raw ?? $c !! ICal::GLib::Parameter.new($c, :!ref) )
       !!
       Nil;
   }
@@ -151,6 +157,15 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
 
   method get_iana_value is also<get-iana-value> {
     i_cal_parameter_get_iana_value($!icp);
+  }
+
+  method get_parent (:$raw = False) is also<get-parent> {
+    my $p = i_cal_parameter_get_parent($!icp);
+
+    $p ??
+      ( $raw ?? $p !! ::('ICal::GLib::Property').new($p, :!ref) )
+      !!
+      Nil;
   }
 
   method get_type is also<get-type> {
@@ -195,6 +210,20 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     i_cal_parameter_set_xvalue($!icp, $v);
   }
 
+  method set_parent (ICalProperty() $property) is also<set-parent> {
+    i_cal_parameter_set_parent($!icp, $property);
+  }
+
+}
+
+class ICal::GLib::Parameter::Value {
+  also does GLib::Roles::StaticClass;
+
+  method to_value_kind (Int() $kind) is also<to-value-kind> {
+    my ICalParameterKind $k = $kind;
+
+    ICalValueKindEnum( i_cal_parameter_value_to_value_kind($k) );
+  }
 }
 
 class ICal::GLib::Parameter::Kind {

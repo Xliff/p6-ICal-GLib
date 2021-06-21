@@ -133,3 +133,22 @@ sub i_cal_parameter_set_xvalue (ICalParameter $param, Str $v)
   is native(ical-glib)
   is export
 { * }
+
+### /usr/include/libical-glib/i-cal-property.h
+
+sub i_cal_parameter_get_parent (ICalParameter $param)
+  returns ICalProperty
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_parameter_set_parent (ICalParameter $param, ICalProperty $property)
+  is native(ical-glib)
+  is export
+{ * }
+
+sub i_cal_parameter_value_to_value_kind (ICalParameterValue $value)
+  returns ICalValueKind
+  is native(ical-glib)
+  is export
+{ * }
