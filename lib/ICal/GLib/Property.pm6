@@ -7,6 +7,7 @@ use ICal::GLib::Raw::Types;
 use ICal::GLib::Raw::Property;
 
 use ICal::GLib::Object;
+use ICal::GLib::Parameter;
 use ICal::GLib::Time;
 use ICal::GLib::Value;
 
@@ -94,11 +95,35 @@ class ICal::GLib::Property is ICal::GLib::Object {
     $ical-property ?? self.bless( :$ical-property ) !! Nil;
   }
 
+  method parent is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_parent    },
+      STORE => -> $, \v { self.set_parent(v) }
+  }
+
+  method value is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_value    },
+      STORE => -> $, \v { self.set_value(v) }
+  }
+
+  method x_name is rw is also<x-name> {
+    Proxy.new:
+      FETCH => -> $     { self.get_x_name    },
+      STORE => -> $, \v { self.set_x_name(v) }
+  }
+
+
   method add_parameter (ICalParameter() $parameter) is also<add-parameter> {
     i_cal_property_add_parameter($!icp, $parameter);
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_property_as_ical_string($!icp);
   }
 
@@ -115,8 +140,8 @@ class ICal::GLib::Property is ICal::GLib::Object {
     i_cal_property_count_parameters($!icp);
   }
 
-  method enum_to_string is also<enum-to-string> {
-    i_cal_property_enum_to_string($!icp);
+  method enum_to_string (ICal::GLib::Property:U: Int() $kind) is also<enum-to-string> {
+    i_cal_property_enum_to_string($kind);
   }
 
   method free {
@@ -160,7 +185,13 @@ class ICal::GLib::Property is ICal::GLib::Object {
       Nil;
   }
 
-  method get_property_name is also<get-property-name> {
+  method get_property_name
+    is also<
+      get-property-name
+      property_name
+      property-name
+    >
+  {
     i_cal_property_get_property_name($!icp);
   }
 
@@ -191,7 +222,8 @@ class ICal::GLib::Property is ICal::GLib::Object {
       Nil;
   }
 
-  method get_value (:$raw = False) is also<get-value> {
+  method get_value (:$raw = False) is also<get-value>
+  {
     my $v = i_cal_property_get_value($!icp);
 
     $v ??
@@ -288,7 +320,7 @@ class ICal::GLib::Property::Kind {
   }
 
   method from_string (Str $str) is also<from-string> {
-    i_cal_property_kind_from_string($str);
+    ICalPropertyKindEnum( i_cal_property_kind_from_string($str) );
   }
 
   method has_property (Int() $kind, Int() $e) is also<has-property> {
@@ -345,18 +377,3 @@ class ICal::GLib::Property::Status {
     i_cal_property_status_to_string($s);
   }
 }
-
-# cw: For stated class, when it exists.
-# class ICal::GLib::Parameter {
-#   method i_cal_parameter_get_parent {
-#     i_cal_parameter_get_parent($!icp);
-#   }
-#
-#   method i_cal_parameter_set_parent (ICalProperty() $property) {
-#     i_cal_parameter_set_parent($!icp, $property);
-#   }
-#
-#   method i_cal_parameter_value_to_value_kind {
-#     i_cal_parameter_value_to_value_kind($!icp);
-#   }
-# }
