@@ -12,6 +12,7 @@ unit package ICal::GLib::Raw::Definitions;
 constant ical-glib is export = 'ical-glib',v3;
 
 class ICalArray          is repr<CPointer> does GLib::Roles::Pointers is export { }
+class ICalAttach         is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalCompIter       is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalDatetimeperiod is repr<CPointer> does GLib::Roles::Pointers is export { }
 class ICalGeo            is repr<CPointer> does GLib::Roles::Pointers is export { }

@@ -80,8 +80,8 @@ class ICal::GLib::Value is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $knd, :$kind is required) {
-    my ICalValueKind $k = $knd;
+  multi method new (Int() $k, :$kind is required) {
+    my ICalValueKind $kk = $k;
 
     my $value = i_cal_value_new($k);
 
@@ -94,6 +94,12 @@ class ICal::GLib::Value is ICal::GLib::Object {
     my $value = i_cal_value_new_from_string($k, $str);
 
     $value ?? self.bless( :$value ) !! Nil
+  }
+
+  method parent is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_parent    },
+      STORE => -> $, \v { self.set_parent(v) }
   }
 
   method as_ical_string
@@ -142,7 +148,7 @@ class ICal::GLib::Value is ICal::GLib::Object {
     i_cal_value_free($!icv);
   }
 
-  method get_parent (:$raw = False) {
+  method get_parent (:$raw = False) is also<get-parent> {
     my $p = i_cal_value_get_parent($!icv);
 
     $p ??
@@ -171,8 +177,18 @@ class ICal::GLib::Value is ICal::GLib::Object {
     so i_cal_value_isa_value($!icv);
   }
 
-  method set_parent (ICalProperty() $property) {
+  method set_parent (ICalProperty() $property) is also<set-parent> {
     i_cal_value_set_parent($!icv, $property);
+  }
+
+  method clear_parent
+    is also<
+      clear-parent
+      unset_parent
+      unset-parent
+    >
+  {
+    self.set_parent(ICalProperty);
   }
 }
 
@@ -191,10 +207,10 @@ class ICal::GLib::Value::Kind {
     so i_cal_value_kind_is_valid($k);
   }
 
-  method to_property_kind (Int() $kind) {
+  method to_property_kind (Int() $kind) is also<to-property-kind> {
     my ICalValueKind $k = $kind;
 
-    i_cal_value_kind_to_property_kind($k);
+    ICalPropertyKindEnum( i_cal_value_kind_to_property_kind($k) );
   }
 
   method to_string (
