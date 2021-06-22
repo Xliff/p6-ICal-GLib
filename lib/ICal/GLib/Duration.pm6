@@ -15,8 +15,8 @@ our subset ICalDurationAncestry is export of Mu
 class ICal::GLib::Duration is ICal::GLib::Object {
   has ICalDuration $!icd;
 
-  submethod BUILD (:$ical-duration) {
-    self.setICalDuration($ical-duration) if $ical-duration;
+  submethod BUILD (:$duration) {
+    self.setICalDuration($duration) if $duration;
   }
 
   method setICalDuration(ICalDurationAncestry $_) {
@@ -75,10 +75,10 @@ class ICal::GLib::Duration is ICal::GLib::Object {
 
     samewith($gc);
   }
-  multi method new (ICalDurationAncestry $ical-duration, :$ref = True) {
-    return Nil unless $ical-duration;
+  multi method new (ICalDurationAncestry $duration, :$ref = True) {
+    return Nil unless $duration;
 
-    my $o = self.bless( :$ical-duration );
+    my $o = self.bless( :$duration );
     $o.ref if $ref;
     $o;
   }
@@ -89,7 +89,7 @@ class ICal::GLib::Duration is ICal::GLib::Object {
     $duration ?? self.bless( :$duration ) !! Nil;
   }
 
-  method new_from_int (gint $t) is also<new-from-int> {
+  method new_from_int (Int() $t) is also<new-from-int> {
     my gint $tt       = $t;
     my      $duration = i_cal_duration_new_from_int($t);
 
