@@ -475,7 +475,8 @@ class ICal::GLib::Timezone::Array {
   # Override superclass!
   method copy (:$raw = False) {
     my $a = callwith(:raw);
-    return $a if $raw;
+    return Nil unless $a;
+    return $a  if     $raw;
 
     ICal::GLib::Timezone::Array.new($a, :!ref)
   }
