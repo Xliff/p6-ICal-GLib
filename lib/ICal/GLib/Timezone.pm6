@@ -46,6 +46,14 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     is also<icaltimezone>
   { cast(icaltimezone, self.get_native) }
 
+  method ICal::GLib::Raw::Definitions::ICalComponent
+    is also<ICalComponent>
+  { self.get_component(:raw) }
+
+  method ICal::Raw::Definitions::icalcomponent
+    is also<icalcomponent>
+  { self.get_component.icalcomponent }
+
   multi method new (icaltimezone $native-ical-tz, :$raw = False) {
     use NativeCall;
     use ICal::Raw::Timezone;
@@ -438,18 +446,38 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
 
 }
 
-class ICal::GLib::Timezone::Array does Positional {
+class ICal::GLib::Timezone::Array {
 
+  multi method new (ICalArrayAncestry $array, :$ref = True) {
+    return Nil unless $array;
+
+    my $o = self.bless( :$array );
+    $o.ref if $ref;
+    $o
+  }
   multi method new {
     my $array = i_cal_timezone_array_new();
 
     $array ?? self.bless( :$array ) !! Nil;
   }
 
-  method append_from_vtimezone (ICalComponent() $child)
+  proto method append_from_vtimezone (|)
     is also<append-from-vtimezone>
-  {
+  { * }
+
+  multi method append_from_vtimezone (@children) {
+    samewith($_) for @children;
+  }
+  multi method append_from_vtimezone (ICalComponent() $child) {
     i_cal_timezone_array_append_from_vtimezone(self.ICalArray, $child);
+  }
+
+  # Override superclass!
+  method copy (:$raw = False) {
+    my $a = callwith(:raw);
+    return $a if $raw;
+
+    ICal::GLib::Timezone::Array.new($a, :!ref)
   }
 
   method element_at (Int() $index, :$raw = False) is also<element-at> {
