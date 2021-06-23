@@ -42,6 +42,9 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     is also<icalparameter>
   { cast(icalparameter, self.get_native) }
 
+  proto method new (|)
+  { * }
+
   multi method new (icalparameter $native-parameter, :$raw = False) {
     use NativeCall;
 
@@ -75,7 +78,7 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $kind) {
+  multi method new ( $kind where *.^can('Int') ) {
     my ICalParameterKind $k = $kind;
 
     my $ical-parameter = i_cal_parameter_new($k);
