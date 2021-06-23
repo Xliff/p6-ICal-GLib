@@ -12,15 +12,15 @@ for @sets {
   say qq:to/CLASS/;
     class ICal::GLib::DerivedParameter::{ $n } is ICal::GLib::Parameter \{
       method new ({ $p.type.^name } { $p.name }) \{
-        my \$ical-parameter = i_cal_parameter_new_{ $n })({ $p.name });
+        my \$ical-parameter = i_cal_parameter_new_{ $n }({ $p.name });
 
         \$ical-parameter ?? self.bless( :\$ical-parameter ) !! Nil;
       \}
 
       method { $n } is rw \{
         Proxy.new:
-          FETCH => \$     \{ self.get_{ $n }    \},
-          STORE => \$, \\v \{ self.set_{ $n }(v) \};
+          FETCH => -> \$     \{ self.get_{ $n }    \},
+          STORE => -> \$, \\v \{ self.set_{ $n }(v) \};
       \}
 
       method get_{ $n } \{
