@@ -19,7 +19,9 @@ class ICal::GLib::DerivedParameter::ActionParam is ICal::GLib::Parameter {
   }
 
   method get_actionparam {
-    i_cal_parameter_get_actionparam(self.ICalParameter);
+    ICalParameterActionEnum(
+      i_cal_parameter_get_actionparam(self.ICalParameter)
+    );
   }
 
   method set_actionparam (uint32 $v) {
