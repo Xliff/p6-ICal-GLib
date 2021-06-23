@@ -91,6 +91,14 @@ our enum ICalParameterEnableEnum is export (
   I_CAL_ENABLE_NONE  =>  ICAL_ENABLE_NONE.Int,
 );
 
+constant ICalParameterEncoding is export := guint32;
+our enum ICalParameterEncodingEnum is export (
+  I_CAL_ENCODING_X      =>      ICAL_ENCODING_X,
+  I_CAL_ENCODING_8BIT   =>   ICAL_ENCODING_8BIT,
+  I_CAL_ENCODING_BASE64 => ICAL_ENCODING_BASE64,
+  I_CAL_ENCODING_NONE   =>   ICAL_ENCODING_NONE,
+);
+
 constant ICalParameterFbtype is export := guint32;
 our enum ICalParameterFbtypeEnum is export (
   I_CAL_FBTYPE_X               =>               ICAL_FBTYPE_X.Int,
