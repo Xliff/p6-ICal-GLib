@@ -1,5 +1,7 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
 use ICal::GLib::Raw::Definitions;
 use ICal::GLib::Raw::Enums;
@@ -796,7 +798,7 @@ sub i_cal_parameter_set_xliccomparetype (
 { * }
 
 sub i_cal_parameter_set_xlicerrortype (
-  ICalParameter              $value, 
+  ICalParameter              $value,
   ICalParameterXlicerrortype $v
 )
   is native(ical-glib)
