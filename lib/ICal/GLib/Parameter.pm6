@@ -79,7 +79,7 @@ class ICal::GLib::Parameter is ICal::GLib::Object {
     $o;
   }
   multi method new ( $kind where *.^can('Int') ) {
-    my ICalParameterKind $k = $kind;
+    my ICalParameterKind $k = $kind.Int;
 
     my $ical-parameter = i_cal_parameter_new($k);
 
