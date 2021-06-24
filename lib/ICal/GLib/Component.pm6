@@ -52,6 +52,9 @@ class ICal::GLib::Component is ICal::GLib::Object {
     is also<icalcomponent>
   { cast(icalcomponent, self.get_native) }
 
+  proto method new(|)
+  { * }
+
   multi method new (icalcomponent $native-ical-comp, :$raw = False) {
     use NativeCall;
     use ICal::Raw::Component;
@@ -86,8 +89,8 @@ class ICal::GLib::Component is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $knd, :$kind is required) {
-    my ICalComponentKind $k = $knd;
+  multi method new ( $kind where *.^can('Int') ) {
+    my ICalComponentKind $k = $kind.Int;
 
     my $ical-component = i_cal_component_new($k);
 
