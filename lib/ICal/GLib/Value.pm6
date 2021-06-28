@@ -80,8 +80,9 @@ class ICal::GLib::Value is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $k, :$kind is required) {
-    my ICalValueKind $kk = $k;
+
+  multi method new ( $k where *.^can('Int') ) {
+    my ICalValueKind $kk = $k.Int;
 
     my $value = i_cal_value_new($k);
 
