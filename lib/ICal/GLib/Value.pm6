@@ -80,8 +80,13 @@ class ICal::GLib::Value is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
+<<<<<<< Updated upstream
   multi method new (Int() $knd, :$kind is required) {
     my ICalValueKind $k = $knd;
+=======
+  multi method new ( $k where *.^can('Int') ) {
+    my ICalValueKind $kk = $k.Int;
+>>>>>>> Stashed changes
 
     my $value = i_cal_value_new($k);
 
