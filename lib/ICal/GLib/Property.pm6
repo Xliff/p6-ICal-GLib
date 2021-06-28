@@ -81,8 +81,8 @@ class ICal::GLib::Property is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $kind) {
-    my ICalPropertyKindEnum $k = $kind;
+  multi method new ( $kind where *.^can('Int') ) {
+    my ICalPropertyKindEnum $k = $kind.Int;
 
     my $ical-property = i_cal_property_new($k);
 

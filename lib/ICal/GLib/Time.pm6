@@ -179,7 +179,12 @@ class ICal::GLib::Time is ICal::GLib::Object {
     i_cal_time_adjust($!ict, $d, $h, $m, $s);
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_time_as_ical_string($!ict);
   }
 
