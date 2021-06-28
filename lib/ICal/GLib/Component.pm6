@@ -52,6 +52,9 @@ class ICal::GLib::Component is ICal::GLib::Object {
     is also<icalcomponent>
   { cast(icalcomponent, self.get_native) }
 
+  proto method new(|)
+  { * }
+
   multi method new (icalcomponent $native-ical-comp, :$raw = False) {
     use NativeCall;
     use ICal::Raw::Component;
@@ -86,8 +89,8 @@ class ICal::GLib::Component is ICal::GLib::Object {
     $o.ref if $ref;
     $o;
   }
-  multi method new (Int() $knd, :$kind is required) {
-    my ICalComponentKind $k = $knd;
+  multi method new ( $kind where *.^can('Int') ) {
+    my ICalComponentKind $k = $kind.Int;
 
     my $ical-component = i_cal_component_new($k);
 
@@ -273,7 +276,12 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_add_property($!icc, $property);
   }
 
-  method as_ical_string is also<as-ical-string> {
+  method as_ical_string
+    is also<
+      as-ical-string
+      Str
+    >
+  {
     i_cal_component_as_ical_string($!icc);
   }
 
@@ -323,8 +331,16 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_count_properties($!icc, $k);
   }
 
-  method end_component (ICalComponentKind $kind) is also<end-component> {
-    i_cal_component_end_component($!icc, $kind);
+  method end_component (Int() $kind, :$raw = False) is also<end-component> {
+    my ICalComponentKind $k = $kind;
+
+    my $ci = i_cal_component_end_component($!icc, $kind);
+
+    # Transfer: full
+    $ci ??
+      ( $raw ?? $ci !! ICal::GLib::Component::Iter.new($ci, :!ref) )
+      !!
+      Nil
   }
 
   method foreach_recurrence (
@@ -816,8 +832,19 @@ class ICal::GLib::Component::Iter {
     $o;
   }
 
-  method deref {
-    i_cal_comp_iter_deref($!icci);
+  method deref (:$raw = False)
+    is also<
+      current
+      cur
+    >
+  {
+    my $c = i_cal_comp_iter_deref($!icci);
+
+    # Transfer: full (?)
+    $c ??
+      ( $raw ?? $c !! ICal::GLib::Component.new($c, :!ref) )
+      !!
+      Nil
   }
 
   method next (:$raw = False) {
@@ -846,7 +873,7 @@ class ICal::GLib::Component::Kind {
   also does GLib::Roles::StaticClass;
 
   method from_string (Str() $string) is also<from-string> {
-    i_cal_component_kind_from_string($string);
+    ICalComponentKindEnum( i_cal_component_kind_from_string($string) );
   }
 
   method is_valid (Int() $kind) is also<is-valid> {
