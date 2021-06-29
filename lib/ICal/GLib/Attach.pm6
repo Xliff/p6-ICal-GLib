@@ -116,19 +116,52 @@ class ICal::GLib::Attach is ICal::GLib::Object {
   }
 
   method new_from_url (Str() $url) is also<new-from-url> {
-    my $ical-attach = i_cal_attach_new_from_url($!ica, $url);
+    my $ical-attach = i_cal_attach_new_from_url($url);
 
     $ical-attach ?? self.bless( :$ical-attach ) !! Nil;
   }
 
-  method get_data (:$buf = False) is also<get-data> {
+
+  method get_data (:$buf = False, :$size, :$null = False)
+    is also<
+      get-data
+      data
+    >
+  {
     my $data = i_cal_attach_get_data($!ica);
     return $data unless $buf;
 
-    Buf.new($data);
+    if $size || $null {
+      die 'Cannot use both :$size and :$null in call to .get_data'
+        unless $size ?^ $null;
+    }
+
+    $data = SizedCArray.new($data, $size) if $size;
+    $data = nullTerminatedBuffer($data)   if $null;
+
+    Buf.new($data.Array);
   }
 
-  method get_is_url is also<get-is-url> {
+  # Camel cased since API exclusive, but offers standard aliases.
+  method getString ( :$encoding = 'utf-8' )
+    is also<
+      get_string
+      get-string
+      string
+    >
+  {
+    # cw: -XXX- Not working with string equivalence. Does this embed the
+    #           NULL termiator?
+    self.get_data( :buf, :null ).decode($encoding);
+  }
+
+  method get_is_url
+    is also<
+      get-is-url
+      is_url
+      is-url
+    >
+  {
     so i_cal_attach_get_is_url($!ica);
   }
 
@@ -138,7 +171,12 @@ class ICal::GLib::Attach is ICal::GLib::Object {
     unstable_get_type( self.^name, &i_cal_attach_get_type, $n, $t );
   }
 
-  method get_url is also<get-url> {
+  method get_url
+    is also<
+      get-url
+      url
+    >
+  {
     i_cal_attach_get_url($!ica);
   }
 
