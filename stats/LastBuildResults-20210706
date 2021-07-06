@@ -1,0 +1,1300 @@
+Dependency Generation
+=====================
+real 0.78
+user 1.24
+sys 0.03
+ === GLib::Array ===
+Stage start      :   0.000
+Stage parse      :   2.243
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.039
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.983
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Enums ===
+Stage start      :   0.000
+Stage parse      :   2.051
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.007
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GLib::Raw::Exceptions ===
+Stage start      :   0.000
+Stage parse      :   1.863
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Exports ===
+Stage start      :   0.000
+Stage parse      :   1.889
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Object ===
+Stage start      :   0.000
+Stage parse      :   2.025
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Struct_Subs ===
+Stage start      :   0.000
+Stage parse      :   1.989
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Structs ===
+Stage start      :   0.000
+Stage parse      :   2.203
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Subs ===
+Stage start      :   0.000
+Stage parse      :   2.162
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::Object ===
+Stage start      :   0.000
+Stage parse      :   2.404
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Roles::Pointers ===
+Stage start      :   0.000
+Stage parse      :   2.004
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::StaticClass ===
+Stage start      :   0.000
+Stage parse      :   2.281
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::Raw::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.974
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::Raw::Enums ===
+Stage start      :   0.000
+Stage parse      :   1.823
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.008
+Stage mbc        :   0.004
+Stage moar       :   0.000
+ === ICal::Raw::Exports ===
+Stage start      :   0.000
+Stage parse      :   1.887
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::Raw::Structs ===
+Stage start      :   0.000
+Stage parse      :   1.996
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Method::Also ===
+Stage start      :   0.000
+Stage parse      :   1.846
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === NativeCall ===
+Stage start      :   0.000
+Stage parse      :   1.961
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === NativeHelpers::Blob ===
+Stage start      :   0.000
+Stage parse      :   1.982
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Definitions ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.251
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.004
+    Stage mast       :   0.025
+    Stage mbc        :   0.002
+Stage parse      :   4.238
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Array ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Array.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.266
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.003
+    Stage mast       :   0.027
+    Stage mbc        :   0.003
+Stage parse      :   4.245
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Attach ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Attach.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.277
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.020
+    Stage mbc        :   0.004
+Stage parse      :   4.287
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Enums ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.591
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.089
+    Stage mast       :   0.100
+    Stage mbc        :   0.041
+Stage parse      :   5.794
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.008
+Stage mast       :   0.007
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Component ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Component.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.950
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.043
+    Stage mast       :   0.165
+    Stage mbc        :   0.056
+Stage parse      :   6.249
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::DateTimePeriod ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/DateTimePeriod.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.274
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.003
+    Stage mast       :   0.027
+    Stage mbc        :   0.003
+Stage parse      :   4.290
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::DerivedParameters ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/DerivedParameters.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.693
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.071
+    Stage mast       :   0.194
+    Stage mbc        :   0.088
+Stage parse      :   7.112
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.013
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Duration ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Duration.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.470
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.038
+    Stage mbc        :   0.009
+Stage parse      :   4.542
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Geo ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Geo.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.242
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.004
+    Stage mast       :   0.018
+    Stage mbc        :   0.004
+Stage parse      :   4.245
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Object ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Object.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.382
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.030
+    Stage mbc        :   0.007
+Stage parse      :   4.397
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Parameter ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Parameter.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.642
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.047
+    Stage mbc        :   0.016
+Stage parse      :   4.678
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Parser ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Parser.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.394
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.026
+    Stage mbc        :   0.007
+Stage parse      :   4.406
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Period ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Period.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.346
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.006
+    Stage mast       :   0.024
+    Stage mbc        :   0.006
+Stage parse      :   4.369
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Property ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Property.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.094
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.112
+    Stage mbc        :   0.028
+Stage parse      :   5.262
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::RecurIterator ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/RecurIterator.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.246
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.003
+    Stage mast       :   0.015
+    Stage mbc        :   0.003
+Stage parse      :   4.213
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Recurrence ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Recurrence.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.663
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.038
+    Stage mast       :   0.101
+    Stage mbc        :   0.043
+Stage parse      :   5.870
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Reqstat ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Reqstat.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.359
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.019
+    Stage mbc        :   0.006
+Stage parse      :   4.363
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Time ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Time.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.883
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.029
+    Stage mast       :   0.098
+    Stage mbc        :   0.028
+Stage parse      :   5.004
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === ICal::GLib::Raw::TimeSpan ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/TimeSpan.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.331
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.025
+    Stage mbc        :   0.007
+Stage parse      :   4.346
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Timezone ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Timezone.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.691
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.056
+    Stage mbc        :   0.015
+Stage parse      :   4.804
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Trigger ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Trigger.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.258
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.025
+    Stage mbc        :   0.004
+Stage parse      :   4.242
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Exports ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Exports.pm6
+    Stage start      :   0.000
+    Stage parse      :   0.104
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.002
+    Stage mbc        :   0.002
+Stage parse      :   2.022
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Types ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.739
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.016
+    Stage mbc        :   0.003
+Stage parse      :   4.809
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.008
+Stage mast       :   0.018
+Stage mbc        :   0.011
+Stage moar       :   0.000
+ === ICal::GLib::Raw::Value ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.554
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.036
+    Stage mbc        :   0.012
+Stage parse      :   4.617
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Object ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Object.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.063
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.036
+    Stage mbc        :   0.013
+R: GLib::Roles::Object
+Stage parse      :   5.238
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Parameter ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Parameter.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.409
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.079
+    Stage mbc        :   0.011
+R: GLib::Roles::StaticClass
+Stage parse      :   4.642
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Parser ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Parser.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.368
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.084
+    Stage mast       :   0.037
+    Stage mbc        :   0.010
+Stage parse      :   4.622
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Reqstat ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Reqstat.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.497
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.035
+    Stage mbc        :   0.016
+Stage parse      :   4.684
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::TimeSpan ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/TimeSpan.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.066
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.044
+    Stage mbc        :   0.015
+Stage parse      :   5.281
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Trigger ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Trigger.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.371
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.043
+    Stage mbc        :   0.010
+Stage parse      :   4.546
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Value ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.747
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.068
+    Stage mbc        :   0.010
+R: GLib::Roles::StaticClass
+Stage parse      :   4.968
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Array ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Array.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.586
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.038
+    Stage mbc        :   0.006
+Stage parse      :   4.773
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Attach ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Attach.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.751
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.049
+    Stage mbc        :   0.013
+Stage parse      :   4.930
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::DateTimePeriod ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/DateTimePeriod.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.524
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.035
+    Stage mbc        :   0.007
+Stage parse      :   4.682
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::DerivedParameters ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/DerivedParameters.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.739
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.198
+    Stage mast       :   0.307
+    Stage mbc        :   0.015
+Stage parse      :   5.405
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Duration ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Duration.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.750
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.049
+    Stage mbc        :   0.008
+Stage parse      :   4.958
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Geo ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Geo.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.332
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.041
+    Stage mbc        :   0.011
+Stage parse      :   4.494
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === ICal::GLib::Timezone ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at -e:1
+ === ICal::GLib::Time ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at -e:1
+ === ICal::GLib::Period ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Period.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Period.pm6 (ICal::GLib::Period)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Period.pm6 (ICal::GLib::Period):10
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Period.pm6 (ICal::GLib::Period)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Period.pm6 (ICal::GLib::Period):10
+
+at -e:1
+ === ICal::GLib::Property ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Property.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+
+at -e:1
+ === ICal::GLib::RecurIterator ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/RecurIterator.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/RecurIterator.pm6 (ICal::GLib::RecurIterator)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/RecurIterator.pm6 (ICal::GLib::RecurIterator):10
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/RecurIterator.pm6 (ICal::GLib::RecurIterator)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/RecurIterator.pm6 (ICal::GLib::RecurIterator):10
+
+at -e:1
+ === ICal::GLib::Recurrence ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Recurrence.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Recurrence.pm6 (ICal::GLib::Recurrence)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Recurrence.pm6 (ICal::GLib::Recurrence):10
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Recurrence.pm6 (ICal::GLib::Recurrence)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Recurrence.pm6 (ICal::GLib::Recurrence):10
+
+at -e:1
+ === ICal::GLib::Component ===
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Component.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Property.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Time.pm6
+            Stage start      :   0.000
+            
+                precomp lib/ICal/GLib/Timezone.pm6
+                Stage start      :   0.000
+                The following packages were stubbed but not defined:
+                    ICal::GLib::Timezone::Array
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+            
+            at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Component.pm6 (ICal::GLib::Component)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Component.pm6 (ICal::GLib::Component):11
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Property.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Time.pm6
+        Stage start      :   0.000
+        
+            precomp lib/ICal/GLib/Timezone.pm6
+            Stage start      :   0.000
+            The following packages were stubbed but not defined:
+                ICal::GLib::Timezone::Array
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+        
+        at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Component.pm6 (ICal::GLib::Component)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property)
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Property.pm6 (ICal::GLib::Property):11
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Component.pm6 (ICal::GLib::Component):11
+
+at -e:1
+
+real 274.58
+user 319.38
+sys 17.85
