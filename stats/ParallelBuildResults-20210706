@@ -1,0 +1,921 @@
+ === Method::Also === 
+Stage start      :   0.000
+Stage parse      :   6.012
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.023
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Method::Also compile time: 7.6245645
+ === GLib::Raw::Exceptions === 
+Stage start      :   0.000
+Stage parse      :   6.207
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.023
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Exceptions compile time: 7.8215616
+ === ICal::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.126
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::Raw::Exports compile time: 7.82212762
+ === ICal::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   6.103
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.012
+Stage mast       :   0.028
+Stage mbc        :   0.014
+Stage moar       :   0.000
+
+ICal::Raw::Enums compile time: 7.94553882
+ === GLib::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   6.610
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.022
+Stage mast       :   0.006
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Raw::Definitions compile time: 8.2572518
+ === GLib::Roles::Pointers === 
+Stage start      :   0.000
+Stage parse      :   6.640
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Roles::Pointers compile time: 8.24677939
+ === GLib::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   7.036
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.029
+Stage mast       :   0.033
+Stage mbc        :   0.007
+Stage moar       :   0.000
+
+GLib::Raw::Enums compile time: 8.39868442
+ === GLib::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.856
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Exports compile time: 8.41149926
+ === ICal::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   6.623
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::Raw::Structs compile time: 8.28948582
+ === GLib::Raw::Object === 
+Stage start      :   0.000
+Stage parse      :   6.989
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+GLib::Raw::Object compile time: 8.45194394
+ === GLib::Raw::Struct_Subs === 
+Stage start      :   0.000
+Stage parse      :   6.750
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Raw::Struct_Subs compile time: 8.4414195
+ === NativeHelpers::Blob === 
+Stage start      :   0.000
+Stage parse      :   6.566
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+NativeHelpers::Blob compile time: 8.32537139
+ === ICal::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   6.865
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::Raw::Definitions compile time: 8.4758336
+ === GLib::Array === 
+Stage start      :   0.000
+Stage parse      :   7.418
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.078
+Stage moar       :   0.000
+
+GLib::Array compile time: 8.70080947
+ === GLib::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   7.000
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Raw::Subs compile time: 8.69690138
+ === GLib::Roles::StaticClass === 
+Stage start      :   0.000
+Stage parse      :   7.085
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Roles::StaticClass compile time: 8.66622157
+ === GLib::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   7.190
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Raw::Structs compile time: 8.8994829
+ === GLib::Roles::Object === 
+Stage start      :   0.000
+Stage parse      :   7.322
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.005
+Stage moar       :   0.000
+
+GLib::Roles::Object compile time: 9.01999923
+ === ICal::GLib::Raw::Definitions === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.002
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.004
+    Stage mast       :   0.027
+    Stage mbc        :   0.002
+Stage parse      :   9.365
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.015
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Definitions compile time: 11.0358899
+ === ICal::GLib::Raw::Array === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Array.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.778
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.018
+    Stage mbc        :   0.004
+Stage parse      :   5.516
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Array compile time: 6.09386291
+ === ICal::GLib::Raw::Attach === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Attach.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.922
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.037
+    Stage mbc        :   0.010
+Stage parse      :   5.559
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Attach compile time: 6.11209242
+ === ICal::GLib::Raw::Enums === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.250
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.091
+    Stage mast       :   0.112
+    Stage mbc        :   0.039
+Stage parse      :   7.113
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.005
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Enums compile time: 7.70511718
+ === ICal::GLib::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   6.322
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.008
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Exports compile time: 7.8942106
+ === ICal::GLib::Raw::RecurIterator === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/RecurIterator.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.037
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.049
+    Stage mbc        :   0.010
+Stage parse      :  13.974
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::RecurIterator compile time: 15.55106125
+ === ICal::GLib::Raw::Geo === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Geo.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.029
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.193
+    Stage mbc        :   0.014
+Stage parse      :  14.892
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Geo compile time: 16.25988403
+ === ICal::GLib::Raw::DateTimePeriod === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/DateTimePeriod.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.091
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.072
+    Stage mbc        :   0.013
+Stage parse      :  14.931
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+ICal::GLib::Raw::DateTimePeriod compile time: 16.33350426
+ === ICal::GLib::Raw::Trigger === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Trigger.pm6
+    Stage start      :   0.000
+    Stage parse      :   7.957
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.059
+    Stage mbc        :   0.018
+Stage parse      :  15.084
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Trigger compile time: 16.6434074
+ === ICal::GLib::Raw::Parser === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Parser.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.800
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.086
+    Stage mbc        :   0.048
+Stage parse      :  15.490
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Parser compile time: 16.86380186
+ === ICal::GLib::Raw::Period === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Period.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.536
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.050
+    Stage mast       :   0.068
+    Stage mbc        :   0.018
+Stage parse      :  15.527
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Period compile time: 17.01227802
+ === ICal::GLib::Raw::Object === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Object.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.845
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.085
+    Stage mbc        :   0.049
+Stage parse      :  15.773
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Object compile time: 17.0612122
+ === ICal::GLib::Raw::Reqstat === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Reqstat.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.303
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.054
+    Stage mbc        :   0.027
+Stage parse      :  15.543
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Reqstat compile time: 17.0584297
+ === ICal::GLib::Raw::TimeSpan === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/TimeSpan.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.745
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.076
+    Stage mbc        :   0.018
+Stage parse      :  15.877
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::TimeSpan compile time: 17.4011878
+ === ICal::GLib::Raw::Parameter === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Parameter.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.512
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.086
+    Stage mbc        :   0.083
+Stage parse      :  16.518
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Parameter compile time: 17.93640883
+ === ICal::GLib::Raw::Duration === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Duration.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.098
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.060
+    Stage mbc        :   0.088
+Stage parse      :  16.966
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Duration compile time: 18.2021069
+ === ICal::GLib::Raw::Timezone === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Timezone.pm6
+    Stage start      :   0.000
+    Stage parse      :   8.932
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.092
+    Stage mbc        :   0.028
+Stage parse      :  16.742
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Timezone compile time: 18.27663667
+ === ICal::GLib::Raw::Property === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Property.pm6
+    Stage start      :   0.000
+    Stage parse      :  10.288
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.067
+    Stage mast       :   0.144
+    Stage mbc        :   0.073
+Stage parse      :  17.181
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Property compile time: 18.70723891
+ === ICal::GLib::Raw::Time === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Time.pm6
+    Stage start      :   0.000
+    Stage parse      :   9.991
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.083
+    Stage mast       :   0.287
+    Stage mbc        :   0.039
+Stage parse      :  17.372
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Time compile time: 18.95956557
+ === ICal::GLib::Raw::Component === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Component.pm6
+    Stage start      :   0.000
+    Stage parse      :  12.042
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.072
+    Stage mast       :   0.247
+    Stage mbc        :   0.104
+Stage parse      :  18.888
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Component compile time: 20.12972826
+ === ICal::GLib::Raw::Recurrence === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Recurrence.pm6
+    Stage start      :   0.000
+    Stage parse      :  11.334
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.051
+    Stage mast       :   0.217
+    Stage mbc        :   0.078
+Stage parse      :  18.706
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Recurrence compile time: 20.0937894
+ === ICal::GLib::Raw::DerivedParameters === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/DerivedParameters.pm6
+    Stage start      :   0.000
+    Stage parse      :  13.137
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.101
+    Stage mast       :   0.251
+    Stage mbc        :   0.125
+Stage parse      :  20.295
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::DerivedParameters compile time: 21.52577971
+ === ICal::GLib::Raw::Value === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.326
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.052
+    Stage mbc        :   0.015
+Stage parse      :  11.483
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Value compile time: 13.6157632
+ === ICal::GLib::Raw::Types === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.322
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.002
+    Stage mast       :   0.078
+    Stage mbc        :   0.003
+Stage parse      :  12.076
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.015
+Stage mast       :   0.021
+Stage mbc        :   0.009
+Stage moar       :   0.000
+
+ICal::GLib::Raw::Types compile time: 14.1268329
+ === ICal::GLib::Object === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Object.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.367
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.042
+    Stage mbc        :   0.018
+Stage parse      :   6.228
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Object compile time: 6.8192407
+ === ICal::GLib::Parser === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Parser.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.605
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.081
+    Stage mbc        :   0.036
+Stage parse      :   9.287
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+ICal::GLib::Parser compile time: 10.04386202
+ === ICal::GLib::Parameter === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Parameter.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.628
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.123
+    Stage mast       :   0.117
+    Stage mbc        :   0.032
+Stage parse      :   9.343
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Parameter compile time: 10.13132262
+ === ICal::GLib::Trigger === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Trigger.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.839
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.130
+    Stage mbc        :   0.018
+Stage parse      :   9.209
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+ICal::GLib::Trigger compile time: 10.07222963
+ === ICal::GLib::Array === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Array.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.827
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.092
+    Stage mbc        :   0.011
+Stage parse      :   9.214
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.003
+Stage moar       :   0.000
+
+ICal::GLib::Array compile time: 10.09602381
+ === ICal::GLib::Reqstat === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Reqstat.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.043
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.063
+    Stage mbc        :   0.035
+Stage parse      :   9.582
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+ICal::GLib::Reqstat compile time: 10.382016
+ === ICal::GLib::Value === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.122
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.037
+    Stage mast       :   0.142
+    Stage mbc        :   0.028
+Stage parse      :   9.719
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+ICal::GLib::Value compile time: 10.5688474
+ === ICal::GLib::DateTimePeriod === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/DateTimePeriod.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.319
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.035
+    Stage mast       :   0.061
+    Stage mbc        :   0.015
+Stage parse      :   9.867
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::DateTimePeriod compile time: 10.74674995
+ === ICal::GLib::Attach === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Attach.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.363
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.054
+    Stage mast       :   0.085
+    Stage mbc        :   0.023
+Stage parse      :  10.661
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::Attach compile time: 11.53606477
+ === ICal::GLib::TimeSpan === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/TimeSpan.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.582
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.043
+    Stage mast       :   0.110
+    Stage mbc        :   0.014
+Stage parse      :  11.022
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+ICal::GLib::TimeSpan compile time: 11.8363635
+ === ICal::GLib::Timezone === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at -e:1
+
+ICal::GLib::Timezone compile time: 7.31968154
+ === ICal::GLib::Time === 
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Time.pm6
+    Stage start      :   0.000
+    
+        precomp lib/ICal/GLib/Timezone.pm6
+        Stage start      :   0.000
+        The following packages were stubbed but not defined:
+            ICal::GLib::Timezone::Array
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+    
+    at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/ICal/GLib/Timezone.pm6
+    Stage start      :   0.000
+    The following packages were stubbed but not defined:
+        ICal::GLib::Timezone::Array
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time)
+Stage start      :   0.000
+The following packages were stubbed but not defined:
+    ICal::GLib::Timezone::Array
+
+at /home/cbwood/Projects/p6-ICal-GLib/lib/ICal/GLib/Time.pm6 (ICal::GLib::Time):9
+
+at -e:1
+
+ICal::GLib::Time compile time: 8.7706409
+
+Errors detected!
+
+Total compile time: 74.42064538s
