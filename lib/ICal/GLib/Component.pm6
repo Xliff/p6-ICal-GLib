@@ -13,8 +13,80 @@ use ICal::GLib::Time;
 #use ICal::GLib::TimeSpan;
 use ICal::GLib::Timezone;
 
-# Pre-definitions
-class ICal::GLib::Component::Iter is ICal::GLib::Object { ... }
+our subset ICalCompIterAncestry is export of Mu
+  where ICalCompIter | ICalObjectAncestry;
+
+class ICal::GLib::Component::Iter {
+  has ICalCompIter $!icci;
+
+  submethod BUILD (:$comp-iter) {
+    self.setICalCompIter($comp-iter) if $comp-iter;
+  }
+
+  method setICalCompIter(ICalCompIterAncestry $_) {
+    my $to-parent;
+
+    $!icci = do {
+      when ICalCompIter {
+        $to-parent = cast(ICalObject, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(ICalCompIter, $_);
+      }
+    }
+    self.setICalObject($to-parent);
+  }
+
+  method ICal::GLib::Raw::Definitions::ICalCompIter
+    is also<ICalCompIter>
+  { $!icci }
+
+  method new (ICalCompIterAncestry $comp-iter, :$ref = True) {
+    return Nil unless $comp-iter;
+
+    my $o = self.bless( :$comp-iter );
+    $o.ref if $ref;
+    $o;
+  }
+
+  method deref (:$raw = False)
+    is also<
+      current
+      cur
+    >
+  {
+    my $c = i_cal_comp_iter_deref($!icci);
+
+    # Transfer: full (?)
+    $c ??
+      ( $raw ?? $c !! ::('ICal::GLib::Component').new($c, :!ref) )
+      !!
+      Nil
+  }
+
+  method next (:$raw = False) {
+    my $c = i_cal_comp_iter_next($!icci);
+
+    # Transfer: full (?)
+    $c ??
+      ( $raw ?? $c !! ::('ICal::GLib::Component').new($c, :!ref) )
+      !!
+      Nil
+  }
+
+  method prior (:$raw = False) {
+    my $c = i_cal_comp_iter_prior($!icci);
+
+    # Transfer: full (?)
+    $c ??
+      ( $raw ?? $c !! ::('ICal::GLib::Component').new($c, :!ref) )
+      !!
+      Nil
+  }
+}
 
 our subset ICalComponentAncestry is export of Mu
   where ICalComponent | ICalObjectAncestry;
@@ -244,16 +316,34 @@ class ICal::GLib::Component is ICal::GLib::Object {
       STORE => -> $, \v { self.set_duration(v) }
   }
 
+  method location is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_location    },
+      STORE => -> $, \v { self.set_location(v) }
+  }
+
   method parent is rw {
     Proxy.new:
       FETCH => -> $     { self.get_parent    },
       STORE => -> $, \v { self.set_parent(v) }
   }
 
+  method relcalid is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_relcalid    },
+      STORE => -> $, \v { self.set_relcalid(v) }
+  }
+
   method recurrenceid is rw {
     Proxy.new:
       FETCH => -> $     { self.get_recurrenceid    },
       STORE => -> $, \v { self.set_recurrencdid(v) }
+  }
+
+  method sequence is rw {
+    Proxy.new:
+      FETCH => -> $     { self.get_sequence    },
+      STORE => -> $, \v { self.set_sequence(v) }
   }
 
   method summary is rw {
@@ -507,7 +597,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
     # Transfer: full
     $prop ??
       ( $raw ?? $prop !! ICal::GLib::Property.new($prop, :!ref) )
-      !!
+    !!
       Nil;
   }
 
@@ -542,12 +632,7 @@ class ICal::GLib::Component is ICal::GLib::Object {
       Nil
   }
 
-  method get_location
-    is also<
-      get-location
-      location
-    >
-  {
+  method get_location is also<get-location> {
     i_cal_component_get_location($!icc);
   }
 
@@ -608,21 +693,11 @@ class ICal::GLib::Component is ICal::GLib::Object {
       Nil;
   }
 
-  method get_relcalid
-    is also<
-      get-relcalid
-      relcalid
-    >
-  {
+  method get_relcalid is also<get-relcalid> {
     i_cal_component_get_relcalid($!icc);
   }
 
-  method get_sequence
-    is also<
-      get-sequence
-      sequence
-    >
-  {
+  method get_sequence is also<get-sequence> {
     i_cal_component_get_sequence($!icc);
   }
 
@@ -717,19 +792,55 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_set_description($!icc, $v);
   }
 
-  method set_dtend (ICalTime() $v) is also<set-dtend> {
-    i_cal_component_set_dtend($!icc, $v);
+  proto method set_dtend (|)
+    is also<set-dtend>
+  { * }
+
+  multi method set_dtend ($v where $v ~~ Str) {
+    samewith( ICal::GLib::Time.new_from_string($v) );
+  }
+  multi method set_dtend (
+    $v where { $v ~~ ICalTime || $v.^can('ICalTime') }
+  ) {
+    i_cal_component_set_dtend($!icc, $v.ICalTime);
   }
 
-  method set_dtstamp (ICalTime() $v) is also<set-dtstamp> {
-    i_cal_component_set_dtstamp($!icc, $v);
+  proto method set_dtstamp (|)
+    is also<set-dtstamp>
+  { * }
+
+  multi method set_dtstamp ($v where $v ~~ Str) {
+    samewith( ICal::GLib::Time.new_from_string($v) );
+  }
+  multi method set_dtstamp (
+    $v where { $v ~~ ICalTime || $v.^can('ICalTime') }
+  ) {
+    i_cal_component_set_dtstamp($!icc, $v.ICalTime);
   }
 
-  method set_dtstart (ICalTime() $v) is also<set-dtstart> {
-    i_cal_component_set_dtstart($!icc, $v);
+  proto method set_dtstart (|)
+    is also<set-dtstart>
+  { * }
+
+  multi method set_dtstart ($v where $v ~~ Str) {
+    samewith( ICal::GLib::Time.new-from-string($v) );
+  }
+  multi method set_dtstart (
+    $v where { $v ~~ ICalTime || $v.^can('ICalTime') }
+  ) {
+    i_cal_component_set_dtstart($!icc, $v.ICalTime);
   }
 
-  method set_due (ICalTime() $v) is also<set-due> {
+  proto method set_due (|)
+    is also<set-due>
+  { * }
+
+  multi method set_due ($v where $v ~~ Str) {
+    samewith( ICal::GLib::Time.new_from_string($v) );
+  }
+  multi method set_due (
+    $v where { $v ~~ ICalTime || $v.^can('ICalTime') }
+  ) {
     i_cal_component_set_due($!icc, $v);
   }
 
@@ -751,8 +862,17 @@ class ICal::GLib::Component is ICal::GLib::Object {
     i_cal_component_set_parent($!icc, $parent);
   }
 
-  method set_recurrenceid (ICalTime() $v) is also<set-recurrenceid> {
-    i_cal_component_set_recurrenceid($!icc, $v);
+  proto method set_recurrenceid (|)
+    is also<set-recurrenceid>
+  { * }
+
+  multi method set_recurrenceid ($v where $v ~~ Str) {
+    samewith( ICal::GLib::Time.new_from_string($v) );
+  }
+  multi method set_recurrenceid (
+    $v where { $v ~~ ICalTime || $v.^can('ICalTime') }
+  ) {
+    i_cal_component_set_recurrenceid($!icc, $v.ICalTime);
   }
 
   method set_relcalid (Str() $v) is also<set-relcalid> {
@@ -792,82 +912,6 @@ class ICal::GLib::Component is ICal::GLib::Object {
   }
 
 }
-
-our subset ICalCompIterAncestry is export of Mu
-  where ICalCompIter | ICalObjectAncestry;
-
-class ICal::GLib::Component::Iter {
-  has ICalCompIter $!icci;
-
-  submethod BUILD (:$comp-iter) {
-    self.setICalCompIter($comp-iter) if $comp-iter;
-  }
-
-  method setICalCompIter(ICalCompIterAncestry $_) {
-    my $to-parent;
-
-    $!icci = do {
-      when ICalCompIter {
-        $to-parent = cast(ICalObject, $_);
-        $_;
-      }
-
-      default {
-        $to-parent = $_;
-        cast(ICalCompIter, $_);
-      }
-    }
-    self.setICalObject($to-parent);
-  }
-
-  method ICal::GLib::Raw::Definitions::ICalCompIter
-    is also<ICalCompIter>
-  { $!icci }
-
-  method new (ICalCompIterAncestry $comp-iter, :$ref = True) {
-    return Nil unless $comp-iter;
-
-    my $o = self.bless( :$comp-iter );
-    $o.ref if $ref;
-    $o;
-  }
-
-  method deref (:$raw = False)
-    is also<
-      current
-      cur
-    >
-  {
-    my $c = i_cal_comp_iter_deref($!icci);
-
-    # Transfer: full (?)
-    $c ??
-      ( $raw ?? $c !! ICal::GLib::Component.new($c, :!ref) )
-      !!
-      Nil
-  }
-
-  method next (:$raw = False) {
-    my $c = i_cal_comp_iter_next($!icci);
-
-    # Transfer: full (?)
-    $c ??
-      ( $raw ?? $c !! ICal::GLib::Component.new($c, :!ref) )
-      !!
-      Nil
-  }
-
-  method prior (:$raw = False) {
-    my $c = i_cal_comp_iter_prior($!icci);
-
-    # Transfer: full (?)
-    $c ??
-      ( $raw ?? $c !! ICal::GLib::Component.new($c, :!ref) )
-      !!
-      Nil
-  }
-}
-
 
 class ICal::GLib::Component::Kind {
   also does GLib::Roles::StaticClass;
