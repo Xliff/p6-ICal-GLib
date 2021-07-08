@@ -7,6 +7,9 @@ use GLib::Raw::Object;
 
 use GLib::Roles::Pointers;
 
+# Forced compile count
+constant forced = 1;
+
 unit package ICal::GLib::Raw::Definitions;
 
 constant ical-glib is export = 'ical-glib',v3;
