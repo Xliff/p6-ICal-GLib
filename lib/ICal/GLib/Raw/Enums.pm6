@@ -344,6 +344,21 @@ our enum ICalPropertyBusytypeEnum is export (
   I_CAL_BUSYTYPE_BUSYTENTATIVE   =>   ICAL_BUSYTYPE_BUSYTENTATIVE.Int,
   I_CAL_BUSYTYPE_NONE            =>            ICAL_BUSYTYPE_NONE.Int,
 );
+constant ICalPropertyBusyType     is export := ICalPropertyBusytype;
+constant ICalPropertyBusyTypeEnum is export := ICalPropertyBusytypeEnum;
+
+constant ICalPropertyCarlevel is export := guint32;
+our enum ICalPropertyCarlevelEnum is export (
+  I_CAL_CARLEVEL_X        => ICAL_CARLEVEL_X.Int,
+  I_CAL_CARLEVEL_CARNONE  => ICAL_CARLEVEL_CARNONE.Int,
+  I_CAL_CARLEVEL_CARMIN   => ICAL_CARLEVEL_CARMIN.Int,
+  I_CAL_CARLEVEL_CARFULL1 => ICAL_CARLEVEL_CARFULL1.Int,
+  I_CAL_CARLEVEL_NONE     => ICAL_CARLEVEL_NONE.Int
+);
+
+constant ICalPropertyCarLevel     is export := ICalPropertyCarlevel;
+constant ICalPropertyCarLevelEnum is export := ICalPropertyCarlevelEnum;
+
 
 constant ICalPropertyCmd is export := guint32;
 our enum ICalPropertyCmdEnum is export (
@@ -514,12 +529,18 @@ our enum ICalPropertyPollcompletionEnum is export (
   I_CAL_POLLCOMPLETION_NONE         =>         ICAL_POLLCOMPLETION_NONE.Int,
 );
 
+constant ICalPropertyPollCompletion     is export := ICalPropertyPollcompletion;
+constant ICalPropertyPollCompletionEnum is export := ICalPropertyPollcompletionEnum;
+
 constant ICalPropertyPollmode is export := guint32;
 our enum ICalPropertyPollmodeEnum is export (
   I_CAL_POLLMODE_X     =>     ICAL_POLLMODE_X.Int,
   I_CAL_POLLMODE_BASIC => ICAL_POLLMODE_BASIC.Int,
   I_CAL_POLLMODE_NONE  =>  ICAL_POLLMODE_NONE.Int,
 );
+
+constant ICalPropertyPollMode     is export := ICalPropertyPollmode;
+constant ICalPropertyPollModeEnum is export := ICalPropertyPollmodeEnum;
 
 constant ICalPropertyStatus is export := guint32;
 our enum ICalPropertyStatusEnum is export (
@@ -547,6 +568,9 @@ our enum ICalPropertyTaskmodeEnum is export (
   I_CAL_TASKMODE_AUTOMATICSTATUS     =>     ICAL_TASKMODE_AUTOMATICSTATUS.Int,
   I_CAL_TASKMODE_NONE                =>                ICAL_TASKMODE_NONE.Int,
 );
+
+constant ICalPropertyTaskMode     is export := ICalPropertyTaskmode;
+constant ICalPropertyTaskModeEnum is export := ICalPropertyTaskmodeEnum;
 
 constant ICalPropertyTransp is export := guint32;
 our enum ICalPropertyTranspEnum is export (
@@ -591,6 +615,9 @@ our enum ICalPropertyXlicclassEnum is export (
   I_CAL_XLICCLASS_NONE                =>                ICAL_XLICCLASS_NONE.Int,
 );
 
+constant ICalPropertyXLicClass     is export := ICalPropertyXlicclass;
+constant ICalPropertyXLicClassEnum is export := ICalPropertyXlicclassEnum;
+
 constant ICalProperty_Class is export := guint32;
 our enum ICalProperty_ClassEnum is export (
   I_CAL_CLASS_X            =>            ICAL_CLASS_X.Int,
@@ -599,6 +626,22 @@ our enum ICalProperty_ClassEnum is export (
   I_CAL_CLASS_CONFIDENTIAL => ICAL_CLASS_CONFIDENTIAL.Int,
   I_CAL_CLASS_NONE         =>         ICAL_CLASS_NONE.Int,
 );
+
+constant ICalPropertyClass     is export := ICalProperty_Class;
+constant ICalPropertyClassEnum is export := ICalProperty_ClassEnum;
+
+
+constant ICalPropertyQuerylevel is export := guint32;
+our enum ICalPropertyQuerylevelEnum is export (
+  I_CAL_QUERYLEVEL_X         =>         ICAL_QUERYLEVEL_X,
+  I_CAL_QUERYLEVEL_CALQL1    =>    ICAL_QUERYLEVEL_CALQL1,
+  I_CAL_QUERYLEVEL_CALQLNONE => ICAL_QUERYLEVEL_CALQLNONE,
+  I_CAL_QUERYLEVEL_NONE      =>      ICAL_QUERYLEVEL_NONE,
+);
+
+constant ICalPropertyQueryLevel     is export := ICalPropertyQuerylevel;
+constant ICalPropertyQueryLevelEnum is export := ICalPropertyQuerylevelEnum;
+
 
 constant ICalRecurrenceArrayMaxValues is export := gshort;
 our enum ICalRecurrenceArrayMaxValuesEnum is export (
