@@ -17,6 +17,7 @@
       "ICal::GLib::Raw::Component"         :  "lib/ICal/GLib/Raw/Component.pm6"         ,
       "ICal::GLib::Raw::DateTimePeriod"    :  "lib/ICal/GLib/Raw/DateTimePeriod.pm6"    ,
       "ICal::GLib::Raw::DerivedParameters" :  "lib/ICal/GLib/Raw/DerivedParameters.pm6" ,
+      "ICal::GLib::Raw::DerivedProperties" :  "lib/ICal/GLib/Raw/DerivedProperties.pm6" ,
       "ICal::GLib::Raw::Duration"          :  "lib/ICal/GLib/Raw/Duration.pm6"          ,
       "ICal::GLib::Raw::Geo"               :  "lib/ICal/GLib/Raw/Geo.pm6"               ,
       "ICal::GLib::Raw::Object"            :  "lib/ICal/GLib/Raw/Object.pm6"            ,
@@ -37,7 +38,7 @@
       "ICal::GLib::Object"                 :  "lib/ICal/GLib/Object.pm6"                ,
       "ICal::GLib::Parameter"              :  "lib/ICal/GLib/Parameter.pm6"             ,
       "ICal::GLib::Parser"                 :  "lib/ICal/GLib/Parser.pm6"                ,
-      "ICal::GLib::Reqstat"                :  "lib/ICal/GLib/Reqstat.pm6"               ,
+      "ICal::GLib::ReqStat"                :  "lib/ICal/GLib/ReqStat.pm6"               ,
       "ICal::GLib::TimeSpan"               :  "lib/ICal/GLib/TimeSpan.pm6"              ,
       "ICal::GLib::Trigger"                :  "lib/ICal/GLib/Trigger.pm6"               ,
       "ICal::GLib::Value"                  :  "lib/ICal/GLib/Value.pm6"                 ,
@@ -53,7 +54,8 @@
       "ICal::GLib::Property"               :  "lib/ICal/GLib/Property.pm6"              ,
       "ICal::GLib::RecurIterator"          :  "lib/ICal/GLib/RecurIterator.pm6"         ,
       "ICal::GLib::Recurrence"             :  "lib/ICal/GLib/Recurrence.pm6"            ,
-      "ICal::GLib::Component"              :  "lib/ICal/GLib/Component.pm6"             
+      "ICal::GLib::Component"              :  "lib/ICal/GLib/Component.pm6"             ,
+      "ICal::GLib::DerivedProperties"      :  "lib/ICal/GLib/DerivedProperties.pm6"     
     },
   "resources": [ ],
   "source-url": "",
