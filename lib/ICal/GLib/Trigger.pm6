@@ -88,6 +88,12 @@ class ICal::GLib::Trigger is ICal::GLib::Object {
     $trigger ?? self.bless( :$trigger ) !! Nil;
   }
 
+  method new_from_string (Str() $str) is also<new-from-string> {
+    my $trigger = i_cal_trigger_new_from_string($str);
+
+    $trigger ?? self.bless( :$trigger ) !! Nil;
+  }
+
   method duration is rw {
     Proxy.new:
       FETCH => -> $     { self.get_duration    },
@@ -98,12 +104,6 @@ class ICal::GLib::Trigger is ICal::GLib::Object {
     Proxy.new:
       FETCH => -> $     { self.get_time    },
       STORE => -> $, \v { self.set_time(v) }
-  }
-
-  method new_from_string (Str() $str) is also<new-from-string> {
-    my $trigger = i_cal_trigger_new_from_string($str);
-
-    $trigger ?? self.bless( :$trigger ) !! Nil;
   }
 
   method get_duration (:$raw = False) is also<get-duration> {
