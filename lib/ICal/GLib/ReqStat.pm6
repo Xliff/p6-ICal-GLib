@@ -10,7 +10,7 @@ use ICal::GLib::Object;
 our subset ICalReqstatAncestry is export of Mu
   where ICalReqstat | ICalObjectAncestry;
 
-class ICal::GLib::Reqstat is ICal::GLib::Object {
+class ICal::GLib::ReqStat is ICal::GLib::Object {
   has ICalReqstat $!icr;
 
   submethod BUILD (:$reqstat) {
