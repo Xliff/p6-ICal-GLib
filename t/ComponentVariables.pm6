@@ -88,3 +88,76 @@ our $recurring is export = qq:to/RECURRING/.&crlf;
   RRULE:FREQ=DAILY;COUNT=10;INTERVAL=1
   END:VEVENT
   RECURRING
+
+
+our @combined-events is export= (q:to/E1/, q:to/E2/, q:to/E3/, q:to/E4/, q:to/E5/);
+  BEGIN:VEVENT
+  UID:event-uid-123
+  SUMMARY;LANGUAGE=en-US:parent
+  DTSTART;TZID=Europe/Prague:20140306T090000
+  DTEND;TZID=Europe/Berlin:20140306T093000
+  CLASS:PUBLIC
+  PRIORITY:5
+  DTSTAMP:20140207T020756Z
+  TRANSP:OPAQUE
+  STATUS:CONFIRMED
+  SEQUENCE:0
+  LOCATION;LANGUAGE=en-US:Location
+  END:VEVENT
+  E1
+    BEGIN:VEVENT
+    UID:event-uid-123
+    SUMMARY;LANGUAGE=en-US:childEvent1
+    DTSTART;TZID=Europe/Prague:20140306T090000
+    DTEND;TZID=Europe/Berlin:20140306T093000
+    CLASS:PUBLIC
+    PRIORITY:5
+    DTSTAMP:20140207T020756Z
+    TRANSP:OPAQUE
+    STATUS:CONFIRMED
+    SEQUENCE:0
+    LOCATION;LANGUAGE=en-US:Location
+    END:VEVENT
+    E2
+      BEGIN:VEVENT
+      UID:event-uid-123
+      SUMMARY;LANGUAGE=en-US:childEvent2
+      DTSTART;TZID=Europe/Prague:20140306T090000
+      DTEND;TZID=Europe/Berlin:20140306T093000
+      CLASS:PUBLIC
+      PRIORITY:5
+      DTSTAMP:20140207T020756Z
+      TRANSP:OPAQUE
+      STATUS:CONFIRMED
+      SEQUENCE:0
+      LOCATION;LANGUAGE=en-US:Location
+      END:VEVENT
+      E3
+        BEGIN:VEVENT
+        UID:event-uid-123
+        SUMMARY;LANGUAGE=en-US:childEvent3
+        DTSTART;TZID=Europe/Prague:20140306T090000
+        DTEND;TZID=Europe/Berlin:20140306T093000
+        CLASS:PUBLIC
+        PRIORITY:5
+        DTSTAMP:20140207T020756Z
+        TRANSP:OPAQUE
+        STATUS:CONFIRMED
+        SEQUENCE:0
+        LOCATION;LANGUAGE=en-US:Location
+        END:VCALENDAR
+        E4
+          BEGIN:VCALENDAR
+          UID:event-uid-123
+          SUMMARY;LANGUAGE=en-US:childCalendar1
+          DTSTART;TZID=Europe/Prague:20140306T090000
+          DTEND;TZID=Europe/Berlin:20140306T093000
+          CLASS:PUBLIC
+          PRIORITY:5
+          DTSTAMP:20140207T020756Z
+          TRANSP:OPAQUE
+          STATUS:CONFIRMED
+          SEQUENCE:0
+          LOCATION;LANGUAGE=en-US:Location
+          END:VCALENDAR
+          E5
