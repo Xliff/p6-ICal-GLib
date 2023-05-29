@@ -171,7 +171,9 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_get_by_month_day($!icr, $i);
   }
 
-  method get_by_month_day_array (:$raw = False) is also<get-by-month-day-array> {
+  method get_by_month_day_array (:$raw = False)
+    is also<get-by-month-day-array>
+  {
     return i_cal_recurrence_get_by_month_day_array($!icr) if $raw;
 
     my $ns = cast(icalrecurrencetype, self.get_native);
@@ -230,14 +232,21 @@ class ICal::GLib::Recurrence is ICal::GLib::Object {
     i_cal_recurrence_get_by_year_day($!icr, $i);
   }
 
-  method get_by_year_day_array (:$raw = False) is also<get-by-year-day-array> {
+  method get_by_year_day_array (:$raw = False)
+    is also<get-by-year-day-array>
+  {
     return i_cal_recurrence_get_by_year_day_array($!icr) if $raw;
 
     my $ns = cast(icalrecurrencetype, self.get_native);
     $ns.by_year_day;
   }
 
-  method get_count is also<get-count> {
+  method get_count
+    is also<
+      get-count
+      elems
+    >
+  {
     i_cal_recurrence_get_count($!icr);
   }
 
