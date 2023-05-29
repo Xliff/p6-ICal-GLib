@@ -126,7 +126,7 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
   }
 
   method free (Int() $free_struct) {
-    my gboolean $f = $free_struct.so.Int;
+    my int32 $f = $free_struct.so.Int;
 
     i_cal_timezone_free($!ictz, $f);
   }
