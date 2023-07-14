@@ -9,10 +9,71 @@ use ICal::GLib::Raw::Timezone;
 use ICal::GLib::Array;
 use ICal::GLib::Object;
 
+use GLib::Roles::Implementor;
+
 our subset ICalTimezoneAncestry is export of Mu
   where ICalTimezone | ICalObjectAncestry;
 
-class ICal::GLib::Timezone::Array is ICal::GLib::Array { ... }
+class ICal::GLib::Timezone::Array is ICal::GLib::Array does Positional {
+  also does GLib::Roles::Implementor;
+
+  multi method new (ICalArrayAncestry $array, :$ref = True) {
+    return Nil unless $array;
+
+    my $o = self.bless( :$array );
+    $o.ref if $ref;
+    $o
+  }
+  multi method new {
+    my $array = i_cal_timezone_array_new();
+
+    $array ?? self.bless( :$array ) !! Nil;
+  }
+
+  method Array {
+    my @a;
+    @a.push: self[$_] for ^self.size;
+    @a;
+  }
+
+  proto method append_from_vtimezone (|)
+    is also<append-from-vtimezone>
+  { * }
+
+  multi method append_from_vtimezone (@children) {
+    samewith($_) for @children;
+  }
+  multi method append_from_vtimezone (ICalComponent() $child) {
+    i_cal_timezone_array_append_from_vtimezone(self.ICalArray, $child);
+  }
+
+  # Override superclass!
+  method copy (:$raw = False) {
+    my $a = callwith(:raw);
+    return Nil unless $a;
+    return $a  if     $raw;
+
+    ICal::GLib::Timezone::Array.new($a, :!ref)
+  }
+
+  method element_at (Int() $index, :$raw = False) is also<element-at> {
+    my $tz = i_cal_timezone_array_element_at(self.ICalArray, $index);
+
+    $tz ??
+      ( $raw ?? $tz !! ::('ICal::GLib::Timezone').new($tz, :!ref) )
+      !!
+      Nil
+  }
+
+  # Positional
+  method AT-POS (\k) {
+    self.element_at(k);
+  }
+
+  method free {
+    i_cal_timezone_array_free(self.ICalArray);
+  }
+}
 
 class ICal::GLib::Timezone is ICal::GLib::Object {
   has ICalTimezone $!ictz;
@@ -197,16 +258,23 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
       Nil;
   }
 
-  method get_builtin_timezones (ICal::GLib::Timezone:U: :$raw = False)
+  method get_builtin_timezones (
+    ICal::GLib::Timezone:U:
+      :$raw    = False,
+      :$object = False
+  )
     is also<get-builtin-timezones>
   {
-    my $a = i_cal_timezone_get_builtin_timezones();
-
     # Transfer: none
-    $a ??
-      ( $raw ?? $a !! ICal::GLib::Timezone::Array.new($a) )
-      !!
-      Nil;
+    my $o = propReturnObject(
+      i_cal_timezone_get_builtin_timezones(),
+      $raw,
+      |ICal::GLib::Timezone::Array.getTypePair
+    );
+
+    return $o if $object;
+
+    $o.Array;
   }
 
   method get_builtin_tzdata (ICal::GLib::Timezone:U: )
@@ -231,6 +299,7 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
       get-display-name
       display_name
       display-name
+      name
     >
   {
     i_cal_timezone_get_display_name($!ictz);
@@ -319,7 +388,11 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
   {
     samewith($tt, $, :all);
   }
-  multi method get_utc_offset (ICalTime() $tt, $is_daylight is rw, :$all = False) {
+  multi method get_utc_offset (
+    ICalTime()  $tt,
+                $is_daylight is rw,
+               :$all                = False
+  ) {
     my gint $i = 0;
 
     my $o = i_cal_timezone_get_utc_offset($!ictz, $tt, $i);
@@ -444,59 +517,23 @@ class ICal::GLib::Timezone is ICal::GLib::Object {
     i_cal_timezone_set_zone_directory($dir);
   }
 
-}
+  method debug ($tt) {
+    my ($o, $d);
 
-class ICal::GLib::Timezone::Array does Positional {
+    if $tt.^name eq 'ICal::GLib::Time' {
+      ($o, $d) = self.get_utc_offset($tt);
+    }
 
-  multi method new (ICalArrayAncestry $array, :$ref = True) {
-    return Nil unless $array;
+    my $D = qq:to/DEBUG/;
+      { self.^name } -->
+        (from methods)
+        id       = { self.get_tzid             }
+        lat      = { self.get_latitude         }
+        long     = { self.get_longitude        }
+        location = { self.get_location         }
+      DEBUG
 
-    my $o = self.bless( :$array );
-    $o.ref if $ref;
-    $o
+    $D ~= "  offset   = { $o }{ $d ?? ' (DST)' !! '' }" if $o;
+    $D;
   }
-  multi method new {
-    my $array = i_cal_timezone_array_new();
-
-    $array ?? self.bless( :$array ) !! Nil;
-  }
-
-  proto method append_from_vtimezone (|)
-    is also<append-from-vtimezone>
-  { * }
-
-  multi method append_from_vtimezone (@children) {
-    samewith($_) for @children;
-  }
-  multi method append_from_vtimezone (ICalComponent() $child) {
-    i_cal_timezone_array_append_from_vtimezone(self.ICalArray, $child);
-  }
-
-  # Override superclass!
-  method copy (:$raw = False) {
-    my $a = callwith(:raw);
-    return Nil unless $a;
-    return $a  if     $raw;
-
-    ICal::GLib::Timezone::Array.new($a, :!ref)
-  }
-
-  method element_at (Int() $index, :$raw = False) is also<element-at> {
-    my $tz = i_cal_timezone_array_element_at(self.ICalArray, $index);
-
-    $tz ??
-      ( $raw ?? $tz !! ICal::GLib::Timezone.new($tz, :!ref) )
-      !!
-      Nil
-  }
-
-  # Positional
-  method AT-POS (\k) {
-    self.element_at(k);
-  }
-
-  method free {
-    i_cal_timezone_array_free(self.ICalArray);
-  }
-
 }
