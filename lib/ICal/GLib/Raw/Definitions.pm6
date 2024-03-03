@@ -8,7 +8,7 @@ use GLib::Raw::Object;
 use GLib::Roles::Pointers;
 
 # Forced compile count
-constant forced = 1;
+constant forced = 171;
 
 unit package ICal::GLib::Raw::Definitions;
 
